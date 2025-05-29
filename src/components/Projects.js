@@ -91,7 +91,7 @@ function Projects() {
                 <p>Skills: Android, React Native</p>
                 <div className="buttons">
                   <button className="btn1">Live</button>
-                  <a href="https://github.com/Gunasaikrishna/QrBarcodeScanner.git" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/Sasikumar319/QrBarcodeScanner" target="_blank" rel="noopener noreferrer">
                     <button className="btn2">GitHub</button>
                   </a>
                 </div>
@@ -113,7 +113,7 @@ function Projects() {
                 <p>Skills: Android, React Native(ios)</p>
                 <div className="buttons">
                   <button className="btn1">Live</button>
-                  <a href="https://github.com/Gunasaikrishna/StreetViewGoogleMap.git" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/Sasikumar319/StreetView" target="_blank" rel="noopener noreferrer">
                     <button className="btn2">GitHub</button>
                   </a>
                 </div>
@@ -133,7 +133,7 @@ function Projects() {
                 <p>Skills: Android, React Native(ios)</p>
                 <div className="buttons">
                   <button className="btn1">Live</button>
-                  <a href="https://github.com/Gunasaikrishna/GoogleMapLive.git" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/Sasikumar319/GoogleMapLive" target="_blank" rel="noopener noreferrer">
                     <button className="btn2">GitHub</button>
                   </a>
                 </div>
@@ -153,7 +153,7 @@ function Projects() {
                 <p>Skills: Android, React Native (ios)</p>
                 <div className="buttons">
                   <button className="btn1">Live</button>
-                  <a href="https://github.com/Gunasaikrishna/CustomizeCameraWiithCrop.git" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/Sasikumar319/CustomizeCamerWithCrop" target="_blank" rel="noopener noreferrer">
                     <button className="btn2">GitHub</button>
                   </a>
                 </div>
@@ -175,7 +175,7 @@ function Projects() {
                 <p>Skills: Android, React Native (ios)</p>
                 <div className="buttons">
                   <button className="btn1">Live</button>
-                  <a href="https://github.com/Gunasaikrishna/TicTokToe.git" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/Sasikumar319/TikTacToe" target="_blank" rel="noopener noreferrer">
                     <button className="btn2">GitHub</button>
                   </a>
                 </div>
@@ -193,7 +193,7 @@ function Projects() {
                 <p>Skills:  React Native(Android \ ios) , JS </p>
                 <div className="buttons">
                   <button className="btn1">Live</button>
-                  <a href="https://github.com/Gunasaikrishna/MedicineNotificationReminder.git" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/Sasikumar319/MedicineNotificationReminder" target="_blank" rel="noopener noreferrer">
                     <button className="btn2">GitHub</button>
                   </a>
                 </div>
@@ -215,7 +215,7 @@ function Projects() {
   <button className="webbtn1">Live</button>
 
   <a
-    href="https://github.com/Gunasaikrishna/ChessGame.git"
+    href="https://github.com/Sasikumar319/chess-ai"
     target="_blank"
     rel="noopener noreferrer"
     className="webbtn2"
@@ -236,7 +236,7 @@ function Projects() {
       <button className="webbtn1">Live </button>
 
       <a
-          href="https://github.com/Gunasaikrishna/ChatBotGoogleAssistanceAI.git"
+          href="https://github.com/Sasikumar319/ChatBotGoogleAssistanceAI"
                     target="_blank"
                     rel="noopener noreferrer"
                      className="webbtn2"

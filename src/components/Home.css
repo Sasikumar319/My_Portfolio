@@ -22,6 +22,8 @@
   }
   
   .right-section {
+    width: 500px;
+    height: 600px;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -63,32 +65,54 @@
     color: #d1d5db;
     max-width: 600px;
   }
-  .animated-photo {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    border: 4px solid #06b6d4;
-    animation: earthWave 5s ease-in-out infinite;
-    transform-style: preserve-3d;
-  }
+  /* Rotating outer colorful border */
+.outer-border {
+  width: 370px;
+  height: 420px;
+  border-radius: 30px;
+  background: conic-gradient(
+    from 0deg,
+    #06b6d4,
+    #3b82f6,
+    #9333ea,
+    #ec4899,
+    #06b6d4
+  );
+  padding: 1px;
+  animation: spinBorder 4s linear infinite;
+  display: inline-block;
+  position: relative;
+
+}
+
+/* Inner container to mask rotation effect */
+.image-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  border-width: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Static image */
+.fixed-photo {
+  width: 350px;
+  height: 400px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  position: relative;
+}
+
+
   
-  @keyframes earthWave {
-    0% {
-      transform: rotateZ(0deg) rotateY(0deg);
-    }
-    25% {
-      transform: rotateZ(5deg) rotateY(10deg);
-    }
-    50% {
-      transform: rotateZ(0deg) rotateY(0deg);
-    }
-    75% {
-      transform: rotateZ(-5deg) rotateY(-10deg);
-    }
-    100% {
-      transform: rotateZ(0deg) rotateY(0deg);
-    }
-  }
   .projectsView {
     width: 100%;
     max-width: 1440px; /* optional, for desktop limit */

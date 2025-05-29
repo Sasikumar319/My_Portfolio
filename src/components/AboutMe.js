@@ -15,7 +15,11 @@ function AboutMe() {
 
       <div className="container">
         <div className="right-section">
-          <img src={devImage} className="animated-photos" />
+        <div className="outer-border">
+  <div className="image-container">
+    <img src={devImage} alt="Developer" className="fixed-photo" />
+  </div>
+</div>
         </div>
 
         <div className="left-section">
@@ -36,9 +40,7 @@ function AboutMe() {
             <p className="eductionText">Eduction and Skills</p>
           </div>
           <p className="summary">
-            I graduated from the Centro Universitário Leonardo Da Vinci (UNIASSELVI) with a degree in Analysis and Systems Development. This provided me with a strong theoretical and practical foundation in modern software development.
-          </p>
-        </div>
+          I graduated in Mechanical Engineering from Jawaharlal Nehru Technological University, Kakinada (JNTUK). Although my academic background is in engineering, I transitioned into the software industry and currently work as a React Native developer, where I leverage my problem-solving abilities and technical skills to build modern mobile applications.</p>        </div>
 
         <div className='left'>
           <div className="profissinalContiner">

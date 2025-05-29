@@ -9,22 +9,65 @@ import {
   SiMysql,
   SiReact,
   SiHtml5,
-  SiCss3
+  SiCss3,
+  SiKotlin,
+  SiXcode
 } from "react-icons/si";
 function Technologies() {
   return (
     <div className="overallDiv">
-   <div className="projectsView">
+  
+  <div className="projectsView">
         <p className="ProjectsText">Technologies</p>
         <p className="summary">
           Discover my skills and experience in various technologies through my
           personal website, where I share insights and innovative solutions.
         </p>
         <div className="techContainer">
+          <div className="techCard">
+          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
+ 
+<SiReact style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30  }} />
+            <p className="techTitle">React JS</p>
+            </div>
+            <p className="techDesc">
+              Experienced in building dynamic web applications using React JS
+              and component-based architecture.
+            </p>
+          </div>
+ 
+          <div className="techCard">
+          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
+ 
+          <SiReact style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30  }} />
+ 
+            <p className="techTitle">React Native</p>
+            </div>
+            <p className="techDesc">
+              Developed cross-platform mobile apps using React Native, ensuring
+              native performance and seamless user experiences.
+            </p>
+          </div>
+ 
+          <div className="techCard">
+          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
+          <SiHtml5 style={{ color: '#e34c26', marginRight: 6, width: 30, height: 30 }} />
+  <SiCss3 style={{ color: '#1572b6', marginRight: 8, width: 30, height: 30 }} />
+  <p className="techTitle" style={{ margin: 0 }}>
+    HTML & CSS
+  </p>
+</div>
+ 
+            <p className="techDesc">
+    Solid foundation in HTML & CSS for structuring and styling web pages with responsive and accessible designs.
+  </p>
+</div>
+        </div>
+        <div className="techContainer">
   <div className="techCard">
   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
   <SiTypescript style={{ color: '#3178c6', marginRight: 8, width: 30, height: 30  }} />
-
+ 
     <p className="techTitle">
       TypeScript & JavaScript
     </p>
@@ -34,11 +77,11 @@ function Technologies() {
       maintainable code with enhanced developer productivity.
     </p>
   </div>
-
+ 
   <div className="techCard">
   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
   <SiJavascript style={{ color: '#f7df1e',marginRight: 8, width: 30, height: 30 }} />
-
+ 
     <p className="techTitle">
       UI / UX Design
     </p>
@@ -49,30 +92,30 @@ function Technologies() {
       principles.
     </p>
   </div>
-
+ 
   <div className="techCard">
   
   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
-  <SiSpringboot style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30 }} />
-
+  <SiKotlin style={{ color: '#7F52FF', marginRight: 8, width: 30, height: 30 }} />
+ 
     <p className="techTitle">
       
-      Spring Boot
+    Kotlin
     </p>
     </div>
     <p className="techDesc">
-      Experience in building robust backend APIs and microservices using
-      Spring Boot, ensuring scalable and maintainable applications.
+    Experience in developing modern, efficient, and type-safe applications using Kotlin, with a focus on clean architecture, maintainability, and performance.
+ 
     </p>
   </div>
 </div>
-
+ 
         <div className="techContainer">
           <div className="techCard">
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
           {/* <SiSpringboot style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30 }} /> */}
-
-
+ 
+ 
             <p className="techTitle">Java
             </p>
             </div>
@@ -81,21 +124,22 @@ function Technologies() {
               backend systems and Android applications with clean architecture.
             </p>
           </div>
-
+ 
           <div className="techCard">
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
-  <SiPython style={{ color: '#3776AB', marginRight: 8, width: 30, height: 30 }} />
-  <p className="techTitle">Python</p>
+          <SiXcode style={{ color: '#147EFB', marginRight: 8, width: 30, height: 30 }} />
+  <p className="techTitle">Xcode</p>
 </div>
             <p className="techDesc">
-              Versatile in Python for scripting, data processing, and backend
-              development with clean and efficient coding practices.
+            Proficient in using Xcode for iOS development, debugging,
+            and testing native applications with seamless deployment workflows.
+ 
             </p>
           </div>
-
+ 
           <div className="techCard">
           <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
-
+ 
           <SiMysql style={{ color: '#00758F', marginRight: 8, width: 50, height: 50 }} />
             <p className="techTitle">SQL</p>
             </div>
@@ -105,48 +149,10 @@ function Technologies() {
             </p>
           </div>
         </div>
-
-        <div className="techContainer">
-          <div className="techCard">
-          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
-
-<SiReact style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30  }} />
-            <p className="techTitle">React JS</p>
-            </div>
-            <p className="techDesc">
-              Experienced in building dynamic web applications using React JS
-              and component-based architecture.
-            </p>
-          </div>
-
-          <div className="techCard">
-          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
-
-          <SiReact style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30  }} />
-
-            <p className="techTitle">React Native</p>
-            </div>
-            <p className="techDesc">
-              Developed cross-platform mobile apps using React Native, ensuring
-              native performance and seamless user experiences.
-            </p>
-          </div>
-
-          <div className="techCard">
-          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
-          <SiHtml5 style={{ color: '#e34c26', marginRight: 6, width: 30, height: 30 }} />
-  <SiCss3 style={{ color: '#1572b6', marginRight: 8, width: 30, height: 30 }} />
-  <p className="techTitle" style={{ margin: 0 }}>
-    HTML & CSS
-  </p>
-</div>
-
-            <p className="techDesc">
-    Solid foundation in HTML & CSS for structuring and styling web pages with responsive and accessible designs.
-  </p>
-</div>
-        </div>
+ 
+        
       </div>
+ 
     <div className="projectsView">
     <p className="ProjectsText">Additional technologies and skills</p>
         <p className="summary">Discover my additional skills and expertise, elevating projects to new heights of quality and efficiency.</p>
@@ -179,12 +185,12 @@ function Technologies() {
 
   <div className="techItem">
     <div className="circleDot"></div>
-    <p>Api's</p>
+    <p>Swageer</p>
   </div>
 
   <div className="techItem">
     <div className="circleDot"></div>
-    <p>AWS</p>
+    <p>Play&AppStore</p>
   </div>
 
   <div className="techItem">
