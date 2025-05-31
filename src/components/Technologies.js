@@ -3,9 +3,6 @@ import './Home.css';
 import {
   SiTypescript,
   SiJavascript,
-  SiSpringboot,
-  SiJava,
-  SiPython,
   SiMysql,
   SiReact,
   SiHtml5,
@@ -153,52 +150,81 @@ function Technologies() {
         
       </div>
  
-    <div className="projectsView">
-    <p className="ProjectsText">Additional technologies and skills</p>
-        <p className="summary">Discover my additional skills and expertise, elevating projects to new heights of quality and efficiency.</p>
-        <div className="techContainer">
-        <div className="techItem">
-    <div className="circleDot"></div>
-    <p>Git & GitHub</p>
-  </div>
+      <div className="AditionalSkilsView">
+      <p
+  style={{
+    color: '#000',
+    fontSize: 34,
+    fontWeight: 1000,
+    fontFamily: 'Poppins',marginLeft:18
+  }}
+>
+  Additional technologies and skills
+</p>
 
-  <div className="techItem">
-    <div className="circleDot"></div>
-    <p>Android Studio</p>
-  </div>
+        <p className="AditionalSkilsSummary">
+          Discover my additional skills and expertise, elevating projects to new
+          heights of quality and efficiency.
+        </p>
+        <div className="AditionalSkilsContainer">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
 
-  <div className="techItem">
-    <div className="circleDot"></div>
-    <p>Postman</p>
-  </div>
+          
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Git & GitHub</p>
+          </div>
 
-  <div className="techItem">
-    <div className="circleDot"></div>
-    <p>VS Code</p>
-  </div>
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Android Studio</p>
+          </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
+
+       
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Postman</p>
+          </div>
+
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">VS Code</p>
+          </div>
+          </div>
+  
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
+
+       
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">X Code</p>
+          </div>
+
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Swagger</p>
+          </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
+
+       
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Play&AppStore</p>
+          </div>
+
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">FireBase Console</p>
+          </div>
+          </div>
         </div>
-        <div className="techContainer">
-        <div className="techItem">
-    <div className="circleDot"></div>
-    <p>X Code</p>
-  </div>
-
-  <div className="techItem">
-    <div className="circleDot"></div>
-    <p>Swageer</p>
-  </div>
-
-  <div className="techItem">
-    <div className="circleDot"></div>
-    <p>Play&AppStore</p>
-  </div>
-
-  <div className="techItem">
-    <div className="circleDot"></div>
-    <p>FireBase Console</p>
-  </div>
-        </div>
-        </div>
+        
+      </div>
     </div>
   );
 }

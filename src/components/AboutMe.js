@@ -1,100 +1,76 @@
-// src/components/About.js
 import React from 'react';
-import './AboutMe.css'; 
-import devImage from '../assets/Sasi photo.jpg'; 
+import './AboutMe.css';
+import devImage from '../assets/Sasi_Ai.jpeg';
 
 function AboutMe() {
   return (
-    <div className="overallDiv">
-      <div className="projectsView">
-        <p className="ProjectsText">About Me</p>
-        <p className="summary">
-          I graduated from the Centro Universitário Leonardo Da Vinci (UNIASSELVI) with a degree in Analysis and Systems Development. This academic foundation has provided me with a solid understanding of software development principles and best practices.
-        </p>
-      </div>
+    <section className="about-container font-poppins">
+      <h1 className="section-title">About Me</h1>
 
-      <div className="container">
-        <div className="right-section">
-        <div className="outer-border">
-  <div className="image-container">
-    <img src={devImage} alt="Developer" className="fixed-photo" />
-  </div>
-</div>
+      <div className="intro-wrapper">
+        <div className="intro-text">
+        <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
+            Hi, I'm <strong>Sasi Kumar Kuppam</strong>, a Mobile App Developer with 2.6 years of professional experience in building robust and user-friendly Android and cross-platform applications using React Native and Kotlin.
+          </p>
+          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
+            Based in Hyderabad, I specialize in crafting scalable apps integrated with REST APIs, Firebase, and modern mobile development tools. I'm passionate about delivering high-performance solutions that solve real-world problems.
+          </p>
         </div>
 
-        <div className="left-section">
-          <p className="line3">
-            Hi there! I'm **Sashi**, a passionate full-stack developer with a strong background in frontend and mobile app development. Let me introduce myself and tell you more about my journey in tech.
-
-            I am from India, where I cultivated a deep interest in software and systems from a young age. My fascination with building interactive applications led me to pursue a career in development.
-
-            Besides coding, I enjoy learning about new tech trends, exploring the outdoors, and occasionally gaming or reading tech blogs to stay sharp. I’m also passionate about building practical solutions that solve real-world problems and make users' lives easier.
-          </p>
+        <div className="intro-image-wrapper">
+          <div className="image-border">
+            <img src={devImage} alt="Sasi Kumar" className="profile-image" />
+          </div>
         </div>
       </div>
 
-      <div className="skillscontiner">
-        <div className='left'>
-          <div className="profissinalContiner">
-            <div className="circleDot"></div>
-            <p className="eductionText">Eduction and Skills</p>
-          </div>
-          <p className="summary">
-          I graduated in Mechanical Engineering from Jawaharlal Nehru Technological University, Kakinada (JNTUK). Although my academic background is in engineering, I transitioned into the software industry and currently work as a React Native developer, where I leverage my problem-solving abilities and technical skills to build modern mobile applications.</p>        </div>
+      <div className="info-sections">
+        <div className="info-block">
+          <h2 className="info-title">
+            <span className="dot" /> Education & Skills
+          </h2>
+          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
+            Bachelor of Technology in Mechanical Engineering from JNTUK (2021). Skilled in React Native, Kotlin, JavaScript, Redux, Firebase, REST APIs, and mobile deployment to Play Store and App Store.
+          </p>
+        </div>
 
-        <div className='left'>
-          <div className="profissinalContiner">
-            <div className="circleDot"></div>
-            <p className="eductionText">Professional Experience</p>
-          </div>
-          <p className="summary">
-            I have worked as a React Native developer and full-stack engineer, contributing to multiple mobile and web projects. I specialize in building scalable apps using modern tech stacks like React, React Native, Node.js, and AWS.
+        <div className="info-block">
+          <h2 className="info-title">
+            <span className="dot" /> Professional Experience
+          </h2>
+          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
+            Currently working at Varsity Education Management Pvt Ltd as a Mobile App Developer. Previously transitioned from intern to junior developer, contributing to Android and cross-platform app development with a focus on performance and scalability.
+          </p>
+        </div>
+
+        <div className="info-block">
+          <h2 className="info-title">
+            <span className="dot" /> Current Role
+          </h2>
+          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
+            Building cross-platform mobile applications using React Native and Kotlin. Collaborating with designers and backend teams, integrating APIs, and deploying apps to the Play Store.
+          </p>
+        </div>
+
+        <div className="info-block">
+          <h2 className="info-title">
+            <span className="dot" /> Tools & Technologies
+          </h2>
+          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
+            Android Studio, Xcode, VS Code, Firebase, SQLite, Realm, Redux, GitHub, Bitbucket, Google Maps, Agile/Scrum, Axios.
+          </p>
+        </div>
+
+        <div className="info-block">
+          <h2 className="info-title">
+            <span className="dot" /> Get in Touch
+          </h2>
+          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
+            I’m open to new opportunities and collaborations. You can reach me at <strong>sasikumarkuppam02754@gmail.com</strong> or on <a href="https://www.linkedin.com/in/sasikumar-ku" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
           </p>
         </div>
       </div>
-
-      <div className="skillscontiner">
-        <div className='left'>
-          <div className="profissinalContiner">
-            <p className="eductionText">Skills</p>
-          </div>
-          <p className="summary">
-            I have expertise in Git/GitHub, UI/UX Design, Spring Boot, AWS & Lambda, Python, SQL, React JS, React Native, HTML & CSS, TypeScript, and JavaScript. My skills enable me to create robust, user-friendly, and high-performing digital solutions.
-          </p>
-        </div>
-
-        <div className='left'>
-          <div className="profissinalContiner">
-            <p className="eductionText">Current Role</p>
-          </div>
-          <p className="summary">
-            Currently, I am working as a React Native developer, focusing on scalable mobile application development. I collaborate with cross-functional teams to deliver engaging and performant mobile experiences that align with business goals.
-          </p>
-        </div>
-      </div>
-
-      <div className="skillscontiner">
-        <div className='left'>
-          <div className="profissinalContiner">
-            <div className="circleDot"></div>
-            <p className="eductionText">Continuous Learning and Specialization</p>
-          </div>
-          <p className="summary">
-            I’m committed to continuous learning, currently diving deeper into Cloud technologies, API integrations, and AI-based systems to stay up-to-date and future-proof my development skills.
-          </p>
-        </div>
-
-        <div className='left'>
-          <div className="profissinalContiner">
-            <div className="circleDot"></div>
-            <p className="eductionText">Get in Touch</p>
-          </div>
-          <p className="summary">
-            If you're looking for a motivated and versatile developer with strong problem-solving skills, feel free to reach out. I'm excited to collaborate and bring your ideas to life with high-quality code and thoughtful user experiences.
-          </p>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }
 

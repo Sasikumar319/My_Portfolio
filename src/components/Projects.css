@@ -4,9 +4,9 @@
   }
   .projectsView {
     width: 100%;
-    max-width: 1440px; /* optional, for desktop limit */
+    max-width: 1440px; 
     margin: 0 ;
-    padding: 40px 20px;
+    padding: 10px 10px;
   }
 .summary{
     color: grey;
@@ -34,7 +34,7 @@
     padding: 30px;
     border-radius: 10px;
     background-color: #111827;
-    color: white;
+
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
   
@@ -66,7 +66,6 @@
     border: none;
     cursor: pointer;
     background: linear-gradient(90deg, #a78bfa, #06b6d4);
-    color: white;
     transition: background-color 0.3s;
     border-radius: 50px;
   }
@@ -77,7 +76,7 @@
    
     cursor: pointer;
     
-    color: white;
+
     transition: background-color 0.3s;
     border-radius: 50px;
   }

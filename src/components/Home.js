@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import devImage from "../assets/Sasi photo.jpg";
 import GoogleMap from "../assets/googleMap.jpeg";
@@ -35,6 +35,25 @@ import {
 import { FaPaintBrush } from "react-icons/fa";
 
 const Home = () => {
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 300) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -92,75 +111,48 @@ const expertiseData = [
   },
 ];
   return (
+    
     <div className="overallDiv">
-      <div className="container">
-        <div className="left-section">
-          <p className="gradient-text">Hello, I'm Sasi Kumar</p>
-          <p className="web-mobile-dev">
-            Web and Mobile Developer (Android \ ios)
-          </p>
-          <p className="line3">
-            Turning Ideas into Digital Reality: SK, a Full Stack Developer
-            passionate about building robust backend systems and crafting
-            elegant, functional user interfaces. Skilled in both frontend and
-            backend technologies, I deliver seamless, high-performance web and
-            mobile solutions that provide exceptional user experiences from end
-            to end.{" "}
-          </p>
-        </div>
+  <div className="container flex flex-col md:flex-row justify-between items-center ">
 
-        <div className="right-section">
-        <div className="outer-border">
-  <div className="image-container">
-    <img src={devImage} alt="Developer" className="fixed-photo" />
-  </div>
+{/* Left Section */}
+<div className="left-section flex-1 text-left space-y-4">
+  <p className="gradient-text text-3xl md:text-5xl font-bold ">
+    Hello, I'm Sasi Kumar
+  </p>
+  <p className=" text-black web-mobile-dev text-2xl md:text-4xl font-bold ">
+    Mobile App Developer (React Native / Android)
+  </p>
+  <p className="line3 text-gray-600 max-w-xl text-sm md:text-base">
+    With 2.6 years of experience, I specialize in building high-performance mobile apps using React Native and Kotlin. I focus on creating user-friendly, scalable applications for Android and iOS platforms.
+  </p>
+</div>
+
+
+{/* Right Section */}
+<div className="right-section flex justify-center items-center">
+<div className="outer-border w-72 h-96 md:w-[370px] md:h-[450px]">
+<div className="image-container w-full h-full">
+<img src={devImage} alt="Developer" className="fixed-photo object-cover w-full h-full rounded-3xl" />
+</div>
+</div>
+</div>
 </div>
 
 
 
 
-        </div>
-       
-      </div>
-      <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
-      <a
-  href={process.env.PUBLIC_URL + '/Sasi Kumar kuppam.pdf'} target="_blank" rel="noopener noreferrer"
-  style={{
-    padding: '10px 20px',
-    backgroundImage: 'linear-gradient(90deg, #a78bfa, #06b6d4)',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '25px',
-    cursor: 'pointer',
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '20px',
-    fontSize: '16px',
-    marginLeft: 100,
-    textDecoration: 'none',    // remove underline
-  }}
->
-  👁️ View Resume
-</a>
- 
- 
- 
- 
- 
+<div className="flex flex-col md:flex-row gap-4 items-center justify-start ">
+  <a
+    href={process.env.PUBLIC_URL + '/Sasi Kumar kuppam.pdf'}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-black text-black px-6 py-2 rounded-full text-lg no-underline"
+  >
+    👁️ View Resume
+  </a>
   <button
-    style={{
-      padding: '10px 20px',
-      backgroundImage: 'linear-gradient(90deg, #a78bfa, #06b6d4)',
-      color: '#fff',
-      border: 'none',
-      borderRadius: '25px',
-      cursor: 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '10px',
-      fontSize: '16px',
-      marginLeft:60,
-    }}
+    className="border border-black text-black px-6 py-2 rounded-full text-lg"
     onClick={() => {
       const link = document.createElement('a');
       link.href = '/Sasi Kumar Kuppam.pdf';
@@ -172,44 +164,54 @@ const expertiseData = [
   >
     ⬇️ Download Resume
   </button>
- 
 </div>
 
 
-<div className="expertise-section single-column">
-  {expertiseData.map((card, index) => (
+
+
+<div className="expertise-section grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+    {expertiseData.map((card, index) => (
     <div
-      key={index}
-      className={`expertise-card ${card.borderClass}`}
-      data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}
-    >
-      <div className="icon-wrapper" style={{ color: card.iconColor }}>
-        <FontAwesomeIcon icon={card.icon} size="2x" />
-      </div>
-      <h3 className="expertise-title">{card.title}</h3>
-      {card.image && (
-        <div className="card-image">
-          <img src={card.image} alt={card.title} />
+    key={index}
+    className={`expertise-card`}
+    style={{
+      borderColor: card.iconColor,
+      borderWidth: '0.5px',
+      borderStyle: 'solid'
+    }}
+    data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}
+  >
+        <div className="icon-wrapper text-2xl" style={{ color: card.iconColor }}>
+          <FontAwesomeIcon icon={card.icon} size="2x" />
+          <h3 className="expertise-title text-xl font-bold">{card.title}</h3>
         </div>
-      )}
-      <p className="expertise-description">{card.description}</p>
-    </div>
-  ))}
-</div>
+      
+        {card.image && (
+          <div className="card-image">
+            <img src={card.image} alt={card.title} />
+          </div>
+        )}
+        <p className="expertise-description text-sm text-black-300">{card.description}</p>
+      </div>
+    ))}
+  </div>
 
 
 
       <div className="projectsView">
         <p className="ProjectsText">Projects</p>
         <p className="summary">
-          Explore a showcase of my creative and innovative projects — from UI
-          design to full-stack development — demonstrating how I bring ideas to
-          life and contribute real value to every endeavor.
-        </p>
+    Explore a showcase of my creative and innovative projects — from UI design to full-stack development — demonstrating how I bring ideas to life and contribute real value to every endeavor.
+  </p>
+        </div>
+
+
+
+
 
         <p className="MobileText">Mobile Projects</p>
-        <div className="NoofprojectsView1">
-          <div className="project-card1 border-purple">
+        <div className="mobileProjectsView">
+          <div className="mobileproject-card border-purple">
             <div className="cardContent">
               <img
                 src={Employee}
@@ -243,7 +245,7 @@ const expertiseData = [
               </div>
             </div>
           </div>
-          <div className="project-card1 border-purple">
+          <div className="mobileproject-card border-purple">
             <div className="cardContent">
               <img src={Parent} alt="Animated Developer" className="p1Image" />
 
@@ -272,7 +274,8 @@ const expertiseData = [
               </div>
             </div>
           </div>
-          <div className="project-card1 border-green">
+          
+          <div className="mobileproject-card border-green">
             <div className="cardContent">
               <img
                 src={GoogleMap}
@@ -306,13 +309,22 @@ const expertiseData = [
           </div>
         </div>
 
+
+
+
+
+
+
+
+
+
         <p className="MobileText">Web Projects</p>
-        <div className="NoofprojectsView">
-        <div className="project-card border-blue">
+        <div className="webprojectsView">
+        <div className="webproject-card border-blue">
   <img src={Chess} alt="Animated Developer"  />
 
-  <h3 className='projectName'>Chess AI</h3>
-    <p className="projectSummary">An interactive chess game built using React JS that allows users to play classic chess with a clean UI and responsive design. The game supports all standard chess rules, legal move validation, check/checkmate detection, and smooth gameplay transitions. Ideal for practicing and enjoying chess in a web environment.</p>
+  <h3 className="webprojectName mt-5">Chess AI</h3>
+    <p className="webprojectSummary">An interactive chess game built using React JS that allows users to play classic chess with a clean UI and responsive design. The game supports all standard chess rules, legal move validation, check/checkmate detection, and smooth gameplay transitions. Ideal for practicing and enjoying chess in a web environment.</p>
 
     <p>Skills: React JS</p>
     <div className="liveBt">
@@ -330,17 +342,17 @@ const expertiseData = [
 
   </div>
 
-          <div className="project-card border-green">
+          <div className="webproject-card border-green">
   <img src={AI} alt="Animated Developer"   />
-  <h3 className='projectName'>Chat & Voice Assistnace AI </h3>
-    <p className="projectSummary">A smart AI-powered assistant built with React JS, Python, and FastAPI that mimics Google Assistant functionalities. It can respond to user queries, perform tasks like weather updates, reminders, and general Q&A using integrated AI and NLP capabilities. The assistant provides real-time voice/text interaction, making it a handy tool for productivity and learning.</p>
+  <h3 className='webprojectName'>Chat & Voice Assistnace AI </h3>
+    <p className="webprojectSummary">A smart AI-powered assistant built with React JS, Python, and FastAPI that mimics Google Assistant functionalities. It can respond to user queries, perform tasks like weather updates, reminders, and general Q&A using integrated AI and NLP capabilities. The assistant provides real-time voice/text interaction, making it a handy tool for productivity and learning.</p>
 
     <p>Skills: React JS ,Python ,Fast Api and SpeechRecognization</p>
     <div className="liveBt">
       <button className="webbtn1">Live </button>
-
+   
       <a
-          href="https://github.com/Gunasaikrishna/ChatBotGoogleAssistanceAI.git"
+          href="https://github.com/Sasikumar319/ChatBotGoogleAssistanceAI"
                     target="_blank"
                     rel="noopener noreferrer"
                      className="webbtn2"
@@ -350,11 +362,11 @@ const expertiseData = [
     </div>
   </div>
 
-          <div className="project-card border-purple">
+          <div className="webproject-card border-purple">
   <img src={StudentForm} alt="Animated Developer" />
 
-    <h3 className='projectName'>Student Details Form</h3>
-    <p className="projectSummary">A modern and dynamic student information form built with React JS, styled using CSS and JavaScript for interactivity. The form captures detailed student data such as name, contact, address, and academic background. It features real-time validation, state management, and a responsive UI, making it ideal for digital admissions and academic record-keeping systems.</p>
+    <h3 className='webprojectName'>Student Details Form</h3>
+    <p className="webprojectSummary">A modern and dynamic student information form built with React JS, styled using CSS and JavaScript for interactivity. The form captures detailed student data such as name, contact, address, and academic background. It features real-time validation, state management, and a responsive UI, making it ideal for digital admissions and academic record-keeping systems.</p>
 
     <p>Skills: React Js, Spring Boot</p>
     <div className="liveBt">
@@ -374,14 +386,21 @@ const expertiseData = [
     </div>
   </div>
         </div>
-      </div>
+   
 
-      <div className="projectsView">
-        <p className="ProjectsText">Technologies</p>
+
+
+
+
+
+        <p className="MobileText">Technologies</p>
         <p className="summary">
           Discover my skills and experience in various technologies through my
           personal website, where I share insights and innovative solutions.
         </p>
+
+      <div className="technologyView">
+       
         <div className="techContainer">
           <div className="techCard">
           <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
@@ -512,57 +531,83 @@ const expertiseData = [
         
       </div>
 
-      <div className="projectsView">
-        <p className="ProjectsText">Additional technologies and skills</p>
-        <p className="summary">
+      <div className="AditionalSkilsView">
+      <p
+  style={{
+    color: '#000',
+    fontSize: 34,
+    fontWeight: 1000,
+    fontFamily: 'Poppins',marginLeft:18
+  }}
+>
+  Additional technologies and skills
+</p>
+
+        <p className="AditionalSkilsSummary">
           Discover my additional skills and expertise, elevating projects to new
           heights of quality and efficiency.
         </p>
-        <div className="techContainer">
-          <div className="techItem">
-            <div className="circleDot"></div>
-            <p>Git & GitHub</p>
+        <div className="AditionalSkilsContainer">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
+
+          
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Git & GitHub</p>
           </div>
 
-          <div className="techItem">
-            <div className="circleDot"></div>
-            <p>Android Studio</p>
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Android Studio</p>
+          </div>
           </div>
 
-          <div className="techItem">
-            <div className="circleDot"></div>
-            <p>Postman</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
+
+       
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Postman</p>
           </div>
 
-          <div className="techItem">
-            <div className="circleDot"></div>
-            <p>VS Code</p>
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">VS Code</p>
+          </div>
+          </div>
+  
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
+
+       
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">X Code</p>
+          </div>
+
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Swagger</p>
+          </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
+
+       
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">Play&AppStore</p>
+          </div>
+
+          <div className="AditionalSkilsItem">
+            <div className="AditionalSkilsCircleDot"></div>
+            <p className="AditionalSkillText">FireBase Console</p>
+          </div>
           </div>
         </div>
-        <div className="techContainer">
-          <div className="techItem">
-            <div className="circleDot"></div>
-            <p>X Code</p>
-          </div>
-
-          <div className="techItem">
-            <div className="circleDot"></div>
-            <p>Swagger</p>
-          </div>
-
-          <div className="techItem">
-            <div className="circleDot"></div>
-            <p>Play&AppStore</p>
-          </div>
-
-          <div className="techItem">
-            <div className="circleDot"></div>
-            <p>FireBase Console</p>
-          </div>
-        </div>
+        
       </div>
 
-      <div className="projectsView">
+      <div className="aboutmeView">
         <p className="ProjectsText">About me</p>
         <p className="summary">
           Crafting visually stunning and functional experiences - I'm a Frontend
@@ -570,32 +615,219 @@ const expertiseData = [
         </p>
       </div>
 
-      <div className="contact-wrapper">
-  <p className="ContactText">Contact Me</p>
-  <p className="summary">
+      <div
+  style={{
+    maxWidth: '600px',
+    margin: '40px auto',
+    fontFamily: "'Poppins', sans-serif",
+    padding: '15px 10px',
+    backgroundColor: '#fff',
+    borderRadius: '12px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.08)', 
+  }}
+>
+  <h2
+    style={{
+      fontSize: '26px',
+      fontWeight: '700',
+      color: '#111827',
+      marginBottom: '15px',
+      textAlign: 'center',
+     
+    }}
+  >
+    Contact Me
+  </h2>
+  <p
+    style={{
+      color: '#6b7280',
+      
+      fontSize: '17px',
+      textAlign: 'center',
+      lineHeight: '1.5',
+    }}
+  >
     Get in Touch: Let's Collaborate and Create Something Amazing Together
   </p>
 
-  {/* Contact Info Section */}
-  <div className="contact-info">
-    <p className="contact-item">
-      📞  <a href="tel:+91 7093165020">Phone : +91 7093165020</a>
-    </p>
-    <p className="contact-item">
-      📧  <a href="mailto:sasikumarkuppam02754@gmail.com">sasikumarkuppam02754@gmail.com</a>
-    </p>
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '18px',
+    }}
+  >
+    {/* Address */}
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '18px',
+        backgroundColor: '#fff',
+        padding: '14px 22px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)'
+
+      }}
+    >
+      <div
+        style={{
+          width: '44px',
+          height: '44px',
+          backgroundColor: '#22d3ee',
+          borderRadius: '50%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: '#fff',
+          fontSize: '22px',
+          flexShrink: 0,
+        }}
+      >
+        📍
+      </div>
+      <span
+        style={{
+          fontSize: '16px',
+          color: '#374151',
+          overflowWrap: 'anywhere',
+        }}
+      >
+        Andhra Pradesh, India
+      </span>
+    </div>
+
+    {/* Phone */}
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '18px',
+        backgroundColor: '#fff',
+        padding: '14px 22px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)'
+
+      }}
+    >
+      <div
+        style={{
+          width: '44px',
+          height: '44px',
+          backgroundColor: '#10b981',
+          borderRadius: '50%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: '#fff',
+          fontSize: '22px',
+          flexShrink: 0,
+        }}
+      >
+        📞
+      </div>
+      <a
+        href="tel:+917093165020"
+        style={{
+          fontSize: '16px',
+          color: '#047857',
+          textDecoration: 'none',
+          overflowWrap: 'anywhere',
+        }}
+      >
+        +91 70931 65020
+      </a>
+    </div>
+
+    {/* Email */}
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '18px',
+        backgroundColor: '#fff',
+        padding: '14px 22px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)'
+
+      }}
+    >
+      <div
+        style={{
+          width: '44px',
+          height: '44px',
+          backgroundColor: '#7c3aed',
+          borderRadius: '50%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: '#fff',
+          fontSize: '22px',
+          flexShrink: 0,
+        }}
+      >
+        📧
+      </div>
+      <a
+        href="mailto:sasikumarkuppam02754@gmail.com"
+        style={{
+          fontSize: '16px',
+          color: '#5b21b6',
+          textDecoration: 'none',
+          wordBreak: 'break-word',
+        }}
+      >
+        sasikumarkuppam02754@gmail.com
+      </a>
+    </div>
   </div>
-
-  {/* Form */}
-  {/* <input type="text" placeholder="Name" className="input-field" />
-  <input type="number" placeholder="Enter Mobile No" className="input-field" />
-  <textarea
-    placeholder="Message"
-    className="input-field message-field"
-  ></textarea>
-
-  <button className="send-button">Send Message</button> */}
 </div>
+
+
+
+<div style={{ maxWidth: '100%', marginTop: '40px' }}>
+  <hr style={{ borderColor: '#444', marginBottom: '15px' }} />
+  <div style={{
+
+    color: '#a78bfa',
+    textAlign: 'center',
+    fontFamily: "'Poppins', sans-serif",
+    fontWeight: '500',
+    fontSize: '14px',
+    userSelect: 'none',
+  }}>
+    © {new Date().getFullYear()} Sasikumar. All rights reserved.
+  </div>
+</div>
+
+ {showScroll && (
+      <button
+      onClick={scrollToTop}
+      style={{
+        position: 'fixed',
+        bottom: '40px',
+        right: '40px',
+        backgroundColor: '#2563eb', // blue
+        border: 'none',
+        borderRadius: '50%',
+        width: '56px',
+        height: '56px',
+        cursor: 'pointer',
+        boxShadow: '0 8px 20px rgba(37, 99, 235, 0.4)',
+        color: 'white',
+        fontSize: '28px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        transition: 'background-color 0.3s ease',
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1e40af')}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#2563eb')}
+      aria-label="Scroll to top"
+    >
+      ↑
+    </button>
+      )}
 
     </div>
   );
