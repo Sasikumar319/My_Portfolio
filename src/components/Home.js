@@ -8,6 +8,11 @@ import Chess from "../assets/chess.png";
 import AI from "../assets/AI.png";
 import StudentForm from "../assets/image.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { initializeApp } from "firebase/app";
+import { getDatabase, push, ref } from "firebase/database";
+import { firebaseConfig } from "./firebaseConfig";
+
 import {
   faCode,
   faMobileAlt,
@@ -34,9 +39,71 @@ import {
 } from "react-icons/si";
 import { FaPaintBrush } from "react-icons/fa";
 
+
+
 const Home = () => {
+  const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [message, setMessage] = useState('');
+  const [showSuccessText, setShowSuccessText] = useState(false); // state to control <p> visibility
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
   const [showScroll, setShowScroll] = useState(false);
 
+
+  const handleSend = () => {
+    // Trim inputs to avoid blank spaces
+    const trimmedName = name.trim();
+    const trimmedMobile = mobile.trim();
+    const trimmedMessage = message.trim();
+  
+    // Validation
+    if (!trimmedName) {
+      alert("Please enter your name.");
+      return;
+    }
+  
+    if (!trimmedMobile) {
+      alert("Please enter your mobile number.");
+      return;
+    }
+  
+    if (!/^\d{10}$/.test(trimmedMobile)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+  
+    if (!trimmedMessage) {
+      alert("Please enter your message.");
+      return;
+    }
+  
+    // If validation passes, proceed
+    console.log("handleSend");
+  
+    push(ref(db, 'submissions/'), {
+      name: trimmedName,
+      mobile: trimmedMobile,
+      message: trimmedMessage,
+      timestamp: new Date().toISOString(),
+    })
+      .then(() => {
+        setShowSuccessText(true);
+        console.log("Data saved successfully");
+  
+        // Clear form
+        setName('');
+        setMobile('');
+        setMessage('');
+  
+        // Hide success message after 5 seconds
+        setTimeout(() => setShowSuccessText(false), 5000);
+      })
+      .catch((error) => {
+        console.error("Error sending message:", error);
+      });
+  };
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 300) {
@@ -615,170 +682,118 @@ const expertiseData = [
         </p>
       </div>
 
-      <div
-  style={{
-    maxWidth: '600px',
-    margin: '40px auto',
-    fontFamily: "'Poppins', sans-serif",
-    padding: '15px 10px',
-    backgroundColor: '#fff',
-    borderRadius: '12px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.08)', 
-  }}
->
-  <h2
-    style={{
-      fontSize: '26px',
-      fontWeight: '700',
-      color: '#111827',
-      marginBottom: '15px',
-      textAlign: 'center',
-     
-    }}
-  >
-    Contact Me
-  </h2>
-  <p
-    style={{
-      color: '#6b7280',
-      
-      fontSize: '17px',
-      textAlign: 'center',
-      lineHeight: '1.5',
-    }}
-  >
-    Get in Touch: Let's Collaborate and Create Something Amazing Together
-  </p>
+      <div style={{
+  background: '#fff',
+  padding: '40px 20px',
 
-  <div
-    style={{
+  fontFamily: "'Poppins', sans-serif"
+}}>
+  <div style={{
+    maxWidth: '900px',
+    margin: '0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '32px'
+  }}>
+
+    {/* Header */}
+    <div style={{ textAlign: 'center' }}>
+      <h2 style={{
+        fontSize: '32px',
+        fontWeight: '700',
+        color: '#111827'
+      }}>Let’s Connect</h2>
+      <p style={{
+        fontSize: '17px',
+        color: '#6b7280',
+        marginTop: '10px'
+      }}>
+        I’d love to hear from you — send a message or reach me through the info below.
+      </p>
+    </div>
+
+    {/* Contact Info */}
+    <div style={{
       display: 'flex',
-      flexDirection: 'column',
-      gap: '18px',
-    }}
-  >
-    {/* Address */}
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '18px',
-        backgroundColor: '#fff',
-        padding: '14px 22px',
-        borderRadius: '10px',
-        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)'
-
-      }}
-    >
-      <div
-        style={{
-          width: '44px',
-          height: '44px',
-          backgroundColor: '#22d3ee',
-          borderRadius: '50%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: '#fff',
-          fontSize: '22px',
-          flexShrink: 0,
-        }}
-      >
-        📍
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      gap: '20px'
+    }}>
+      {/* Address */}
+      <div style={contactCardStyle}>
+        <div style={{ ...iconCircleStyle, backgroundColor: '#22d3ee' }}>📍</div>
+        <span style={cardTextStyle}>Andhra Pradesh, India</span>
       </div>
-      <span
-        style={{
-          fontSize: '16px',
-          color: '#374151',
-          overflowWrap: 'anywhere',
-        }}
-      >
-        Andhra Pradesh, India
-      </span>
+
+      {/* Phone */}
+      <div style={contactCardStyle}>
+        <div style={{ ...iconCircleStyle, backgroundColor: '#10b981' }}>📞</div>
+        <a href="tel:+917093165020" style={cardLinkStyle}>+91 70931 65020</a>
+      </div>
+
+      {/* Email */}
+      <div style={contactCardStyle}>
+        <div style={{ ...iconCircleStyle, backgroundColor: '#7c3aed' }}>📧</div>
+        <a href="mailto:sasikumarkuppam02754@gmail.com" style={cardLinkStyle}>
+          sasikumarkuppam02754@gmail.com
+        </a>
+      </div>
     </div>
 
-    {/* Phone */}
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '18px',
-        backgroundColor: '#fff',
-        padding: '14px 22px',
-        borderRadius: '10px',
-        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)'
+    {/* Contact Form */}
+    <div style={{
+      backgroundColor: '#fff',
+      padding: '30px',
+      borderRadius: '16px',
+      boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+      maxWidth: '600px',
+      margin: '0 auto'
+    }}>
+      <h3 style={{ textAlign: 'center', fontSize: '24px', marginBottom: '20px', color: '#111827' }}>Send a Message</h3>
 
-      }}
-    >
-      <div
-        style={{
-          width: '44px',
-          height: '44px',
-          backgroundColor: '#10b981',
-          borderRadius: '50%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: '#fff',
-          fontSize: '22px',
-          flexShrink: 0,
-        }}
-      >
-        📞
-      </div>
-      <a
-        href="tel:+917093165020"
-        style={{
-          fontSize: '16px',
-          color: '#047857',
-          textDecoration: 'none',
-          overflowWrap: 'anywhere',
-        }}
-      >
-        +91 70931 65020
-      </a>
-    </div>
+      <input
+        type="text"
+        placeholder="Your Name"
+        style={inputStyle}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
 
-    {/* Email */}
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '18px',
-        backgroundColor: '#fff',
-        padding: '14px 22px',
-        borderRadius: '10px',
-        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.15)'
+      <input
+        type="tel"
+        placeholder="Mobile Number"
+        style={inputStyle}
+        value={mobile}
+        onChange={(e) => setMobile(e.target.value)}
+      />
 
-      }}
-    >
-      <div
-        style={{
-          width: '44px',
-          height: '44px',
-          backgroundColor: '#7c3aed',
-          borderRadius: '50%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: '#fff',
-          fontSize: '22px',
-          flexShrink: 0,
+      <textarea
+        placeholder="Your Message"
+        style={{ ...inputStyle, height: '100px', resize: 'vertical' }}
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+
+      <button
+        style={sendBtnStyle}
+        onClick={() => {
+          console.log("Sending message...");
+          handleSend();
         }}
       >
-        📧
-      </div>
-      <a
-        href="mailto:sasikumarkuppam02754@gmail.com"
-        style={{
-          fontSize: '16px',
-          color: '#5b21b6',
-          textDecoration: 'none',
-          wordBreak: 'break-word',
-        }}
-      >
-        sasikumarkuppam02754@gmail.com
-      </a>
+        🚀 Send Message
+      </button>
+
+      {showSuccessText && (
+        <p style={{
+          marginTop: '16px',
+          color: 'green',
+          textAlign: 'center',
+          fontWeight: 500
+        }}>
+          ✅ Message sent successfully. Sasi Kumar will reach you soon... 😄
+        </p>
+      )}
     </div>
   </div>
 </div>
@@ -835,3 +850,62 @@ const expertiseData = [
 
 export default Home;
 
+const contactCardStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '16px',
+  backgroundColor: '#fff',
+  padding: '14px 22px',
+  borderRadius: '10px',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
+  flex: '1 1 250px'
+};
+
+const iconCircleStyle = {
+  width: '44px',
+  height: '44px',
+  borderRadius: '50%',
+  color: '#fff',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '22px',
+  flexShrink: 0
+};
+
+const cardTextStyle = {
+  fontSize: '16px',
+  color: '#374151',
+  wordBreak: 'break-word'
+};
+
+const cardLinkStyle = {
+  fontSize: '16px',
+  color: '#2563eb',
+  textDecoration: 'none',
+  wordBreak: 'break-word'
+};
+
+const inputStyle = {
+  width: '100%',
+  padding: '12px 14px',
+  marginBottom: '16px',
+  border: '1px solid #ccc',
+  borderRadius: '10px',
+  fontSize: '1rem',
+  outline: 'none',
+  color:'#000'
+};
+
+const sendBtnStyle = {
+  width: '100%',
+  padding: '12px',
+  backgroundColor: '#007bff',
+  color: 'white',
+  border: 'none',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  borderRadius: '10px',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s ease-in-out'
+};
