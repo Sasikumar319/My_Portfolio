@@ -1,0 +1,29 @@
+/* ContactSection.css */
+.contact-section {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .contact-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111827;
+  }
+  
+  .contact-subtitle {
+    font-size: 17px;
+    color: #6b7280;
+    margin-top: 10px;
+  }
+  
+  /* Mobile responsive */
+  @media (max-width: 600px) {
+    .contact-title {
+      font-size: 22px;
+    }
+  
+    .contact-subtitle {
+      font-size: 14px;
+    }
+  }
+  

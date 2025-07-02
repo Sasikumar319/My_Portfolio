@@ -38,6 +38,8 @@ import {
   SiXcode
 } from "react-icons/si";
 import { FaPaintBrush } from "react-icons/fa";
+import ContactSection from "./ContactSection";
+
 
 
 
@@ -698,19 +700,9 @@ const expertiseData = [
 
     {/* Header */}
     <div style={{ textAlign: 'center' }}>
-      <h2 style={{
-        fontSize: '32px',
-        fontWeight: '700',
-        color: '#111827'
-      }}>Let’s Connect</h2>
-      <p style={{
-        fontSize: '17px',
-        color: '#6b7280',
-        marginTop: '10px'
-      }}>
-        I’d love to hear from you — send a message or reach me through the info below.
-      </p>
+    <ContactSection />
     </div>
+
 
     {/* Contact Info */}
     <div style={{
