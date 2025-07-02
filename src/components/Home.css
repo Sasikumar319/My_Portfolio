@@ -572,37 +572,6 @@ font-family: 'Poppins', sans-serif;
     color: grey;
     margin-left: 18px;
 }
-.AditionalSkilsContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 50px;
-  flex-wrap: wrap;
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-
-}
-.AditionalSkilsItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: #fff;
-  padding: 12px 20px;
-  border-radius: 10px;
-  min-width: 180px;
-  color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
-    text-align: center;
-    transition: transform 0.3s ease;
- 
-}  .AditionalSkilsCircleDot {
-    width: 14px;
-    height: 14px;
-    background: linear-gradient(90deg, #a78bfa, #06b6d4);
-
-    border-radius: 50%;
-  }
     
   @media (max-width: 768px) {
     .AditionalSkilsContainer {

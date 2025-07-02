@@ -32,7 +32,7 @@ function Projects() {
   return (
     <div className="overallDiv">
 <div className="projectsView">
-        <p className="ProjectsText">Projects</p>
+        <p className="ProjectsTextContent">Projects</p>
         <p className="summary">
           Explore a showcase of my creative and innovative projects — from UI
           design to full-stack development — demonstrating how I bring ideas to

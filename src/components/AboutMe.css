@@ -2,8 +2,8 @@
 .about-container {
   max-width: 1000px;
   margin: 0px auto;
-  padding: 0 20px;
-  background-color: #fb0000;
+  padding-top: 70px;
+  background-color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;font-family: 'Poppins', sans-serif;
 }

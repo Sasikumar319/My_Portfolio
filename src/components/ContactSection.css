@@ -1,8 +1,10 @@
 /* ContactSection.css */
 .contact-section {
     text-align: center;
-    padding: 20px;
-    background-color: #155ded;
+    padding: 2px;
+    background-color: #ffffff;
+    margin-left: 100px;
+    margin-right: 100px;
   }
   
   .contact-title {
@@ -16,7 +18,57 @@
     color: #6b7280;
     margin-top: 10px;
   }
+  .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+  }
   
+  .contact-card {
+    flex: 1 1 30%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #f9fafb;
+    border-color: #10b981;
+    border-width: 1px;
+    box-shadow: 0 4px 10px rgba(38, 27, 27, 0.06);
+  }
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }  .icon-circle3 {
+    width: 50px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  
+  .bg-cyan {
+    background-color: #22d3ee;
+  }
+  
+  .bg-green {
+    background-color: #10b981;
+  }
+  
+  .bg-purple {
+    background-color: #7c3aed;
+  }
   /* Mobile responsive */
   @media (max-width: 600px) {
     .contact-title {
@@ -24,12 +76,16 @@
     }
     .contact-section {
         text-align: center;
-        background-color: #29bfc2;
+        margin-top: 0px;
       }
     .contact-subtitle {
       font-size: 14px;
       color: #155ded;
       
     }
+    .contact-info {
+        flex-direction: column;
+        gap: 16px;
+      }
   }
   

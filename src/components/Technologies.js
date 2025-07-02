@@ -15,7 +15,7 @@ function Technologies() {
     <div className="overallDiv">
   
   <div className="projectsView">
-        <p className="ProjectsText">Technologies</p>
+        <p className="ProjectsTextContent">Technologies</p>
         <p className="summary">
           Discover my skills and experience in various technologies through my
           personal website, where I share insights and innovative solutions.

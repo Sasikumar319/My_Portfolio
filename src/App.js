@@ -10,7 +10,7 @@ import './App.css'
 import HomeScreen from './components/HomeScreen';
 
 const TABS = [
-  {id:'new', label:'Home'},
+
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About me' },
   { id: 'projects', label: 'Projects' },
@@ -31,8 +31,8 @@ function App() {
       />
 
 <main className="tabView">
-{activeTab === 'new' && <HomeScreen />}
-  {activeTab === 'home' && <Home />}
+
+  {activeTab === 'home' && <HomeScreen />}
   {activeTab === 'about' && <AboutMe />}
   {activeTab === 'projects' && <Projects />}
   {activeTab === 'tech' && <Technologies />}
