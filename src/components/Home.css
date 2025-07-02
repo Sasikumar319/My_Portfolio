@@ -1,13 +1,13 @@
-.overallDiv{
-  margin-left: 100px;
-  margin-right: 100px;font-family: 'Poppins', sans-serif;
+.overallDiv {
+  margin-top: 100px;
+  overflow-x: hidden;
 }
+
 .container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-  
 
   }
   .left-section {
@@ -48,7 +48,7 @@
     font-weight: 700;
     margin-left: 28px;
     background: linear-gradient(90deg, #a78bfa, #06b6d4);
-    -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
   }
   
@@ -204,7 +204,10 @@
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+  .overallDiv{
+    margin-top: 60px;
+  }
   .webproject-card img {
     display: none;
   }

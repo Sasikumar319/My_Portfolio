@@ -2,6 +2,7 @@
 .contact-section {
     text-align: center;
     padding: 20px;
+    background-color: #155ded;
   }
   
   .contact-title {
@@ -21,9 +22,14 @@
     .contact-title {
       font-size: 22px;
     }
-  
+    .contact-section {
+        text-align: center;
+        background-color: #29bfc2;
+      }
     .contact-subtitle {
       font-size: 14px;
+      color: #155ded;
+      
     }
   }
   

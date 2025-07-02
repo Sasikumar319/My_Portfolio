@@ -6,8 +6,11 @@ import './index.css';
 import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
 import Technologies from './components/Technologies';
+import './App.css'
+import HomeScreen from './components/HomeScreen';
 
 const TABS = [
+  {id:'new', label:'Home'},
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About me' },
   { id: 'projects', label: 'Projects' },
@@ -20,14 +23,15 @@ function App() {
   const [activeTab, setActiveTab] = useState('home');
 
   return (
-    <div className="bg-[#fff] min-h-screen flex flex-col justify-between">
+    <div className="overallContainer">
       <Header 
         tabs={TABS} 
         activeTab={activeTab} 
         onTabClick={setActiveTab} 
       />
 
-<main className="pt-40 p-6 text-white flex-grow">
+<main className="tabView">
+{activeTab === 'new' && <HomeScreen />}
   {activeTab === 'home' && <Home />}
   {activeTab === 'about' && <AboutMe />}
   {activeTab === 'projects' && <Projects />}

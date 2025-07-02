@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Home.css";
-import devImage from "../assets/Sasi photo.jpg";
+
 import GoogleMap from "../assets/googleMap.jpeg";
 import Employee from "../assets/employe.jpeg";
 import Parent from "../assets/parent.jpeg";
@@ -182,58 +182,12 @@ const expertiseData = [
   return (
     
     <div className="overallDiv">
-  <div className="container flex flex-col md:flex-row justify-between items-center ">
-
-{/* Left Section */}
-<div className="left-section flex-1 text-left space-y-4">
-  <p className="gradient-text text-3xl md:text-5xl font-bold ">
-    Hello, I'm Sasi Kumar
-  </p>
-  <p className=" text-black web-mobile-dev text-2xl md:text-4xl font-bold ">
-    Mobile App Developer (React Native / Android)
-  </p>
-  <p className="line3 text-gray-600 max-w-xl text-sm md:text-base">
-    With 2.6 years of experience, I specialize in building high-performance mobile apps using React Native and Kotlin. I focus on creating user-friendly, scalable applications for Android and iOS platforms.
-  </p>
-</div>
-
-
-{/* Right Section */}
-<div className="right-section flex justify-center items-center">
-<div className="outer-border w-72 h-96 md:w-[370px] md:h-[450px]">
-<div className="image-container w-full h-full">
-<img src={devImage} alt="Developer" className="fixed-photo object-cover w-full h-full rounded-3xl" />
-</div>
-</div>
-</div>
-</div>
 
 
 
 
-<div className="flex flex-col md:flex-row gap-4 items-center justify-start ">
-  <a
-    href={process.env.PUBLIC_URL + '/Sasi Kumar kuppam.pdf'}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="border border-black text-black px-6 py-2 rounded-full text-lg no-underline"
-  >
-    👁️ View Resume
-  </a>
-  <button
-    className="border border-black text-black px-6 py-2 rounded-full text-lg"
-    onClick={() => {
-      const link = document.createElement('a');
-      link.href = '/Sasi Kumar Kuppam.pdf';
-      link.download = 'Resume.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }}
-  >
-    ⬇️ Download Resume
-  </button>
-</div>
+
+
 
 
 

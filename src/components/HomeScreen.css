@@ -1,0 +1,104 @@
+/* ContactSection.css */
+.home-section {
+    text-align: center;
+    background-color: #ffffff;
+    margin-top: 90px;
+  }
+  .home-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+    flex-wrap: wrap;
+
+  }
+  .outer-border {
+    width: 370px;
+    height: 450px;
+  }
+  .resume-buttons {
+    flex-direction: row;  
+  }
+  .resume-button1 {
+    border: 1px solid black;
+    color: black;
+    padding: 10px 24px;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .resume-button2 {
+    border: 1px solid black;
+    color: black;
+    padding: 10px 24px;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 30px;
+  }
+  
+  .resume-button:hover {
+    background-color: #f3f3f3;
+  }
+  
+  
+  /* Responsive for small screens */
+  @media (max-width: 768px) {
+    .home-container {
+      flex-direction: column;
+      text-align: center;
+      margin-top: 10px;
+ 
+    }
+  
+    .left-section {
+      margin-bottom: 20px;
+    }
+  
+    .right-section {
+      justify-content: center;
+    }
+  
+    .web-mobile-dev {
+      font-size: 22px;
+    }
+    .outer-border {
+        width: 250px;
+        height: 320px;
+      }
+      .resume-buttons {
+        flex-direction: row;
+      }
+      .resume-button1 {
+        border: 1px solid black;
+        color: black;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .resume-button2 {
+        border: 1px solid black;
+        color: black;
+        padding: 5px 14px;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: 30px;
+      }
+  }
+  
+  
