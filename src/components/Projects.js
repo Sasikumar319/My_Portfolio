@@ -29,10 +29,43 @@ function Projects() {
     return () => observer.disconnect();
   }, []);
 
+  const webProjectData = [
+    {
+      title: 'Chess AI',
+      description:
+        'An interactive chess game built using React JS that allows users to play classic chess with a clean UI and responsive design. The game supports all standard chess rules, legal move validation, check/checkmate detection, and smooth gameplay transitions.',
+      skills: 'React JS',
+      image: Chess,
+      liveLink: '#',
+      githubLink: 'https://github.com/Sasikumar319/chess-ai',
+      borderClass: 'border-blue',
+    },
+    {
+      title: 'Chat & Voice Assistance AI',
+      description:
+        'A smart AI-powered assistant built with React JS, Python, and FastAPI. It can respond to user queries and perform tasks like weather updates, reminders, and general Q&A using AI and NLP.',
+      skills: 'React JS, Python, FastAPI, SpeechRecognition',
+      image: AI,
+      liveLink: '#',
+      githubLink: 'https://github.com/Sasikumar319/ChatBotGoogleAssistanceAI',
+      borderClass: 'border-green',
+    },
+    {
+      title: 'Student Details Form',
+      description:
+        'A modern and dynamic student information form built with React JS and Spring Boot. It features real-time validation, state management, and a responsive UI, ideal for digital admissions.',
+      skills: 'React JS, Spring Boot',
+      image: StudentForm,
+      liveLink: 'https://srichaitanyaschool.net/users/login',
+      githubLink: '', 
+      borderClass: 'border-purple',
+    },
+  ];
   return (
-    <div className="overallDiv">
-<div className="projectsView">
-        <p className="ProjectsTextContent">Projects</p>
+    <div className="projectOverallDiv">
+  
+    <div className="ProjectdetailsView">
+          <p className="ProjectsTextContent">Projects</p>
         <p className="summary">
           Explore a showcase of my creative and innovative projects — from UI
           design to full-stack development — demonstrating how I bring ideas to
@@ -289,75 +322,44 @@ Ideal for elderly users or anyone managing multiple prescriptions.
 
 
 
-
-        <p className="MobileText">Web Projects</p>
-        <div className="webprojectsView">
-        <div className="webproject-card border-blue">
-  <img src={Chess} alt="Animated Developer"  />
-
-  <h3 className='webprojectName'>Chess AI</h3>
-    <p className="webprojectSummary">An interactive chess game built using React JS that allows users to play classic chess with a clean UI and responsive design. The game supports all standard chess rules, legal move validation, check/checkmate detection, and smooth gameplay transitions. Ideal for practicing and enjoying chess in a web environment.</p>
-
-    <p>Skills: React JS</p>
-    <div className="liveBt">
-  <button className="webbtn1">Live</button>
-
-  <a
-    href="https://github.com/Sasikumar319/chess-ai"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="webbtn2"
-  >
-    GitHub
-  </a>
+        <div className="home-projects">
+<h4 className="mobile-ProjectsText">Web Projects</h4>
 </div>
 
-  </div>
+<div className="home-webprojectsView">
+      {webProjectData.map((project, index) => (
+        <div className={`home-webproject-card ${project.borderClass}`} key={index}>
+          <img src={project.image} alt={project.title} className='' />
 
-          <div className="webproject-card border-green">
-  <img src={AI} alt="Animated Developer"   />
-  <h3 className='webprojectName'>Chat & Voice Assistnace AI </h3>
-    <p className="webprojectSummary">A smart AI-powered assistant built with React JS, Python, and FastAPI that mimics Google Assistant functionalities. It can respond to user queries, perform tasks like weather updates, reminders, and general Q&A using integrated AI and NLP capabilities. The assistant provides real-time voice/text interaction, making it a handy tool for productivity and learning.</p>
+          <h3 className="home-webprojectName mt-5">{project.title}</h3>
+          <p className="home-webprojectSummary">{project.description}</p>
+          <p style={{ marginBottom: 10 }}><strong>Skills:</strong> {project.skills}</p>
 
-    <p>Skills: React JS ,Python ,Fast Api and SpeechRecognization</p>
-    <div className="liveBt">
-      <button className="webbtn1">Live </button>
-
-      <a
-          href="https://github.com/Gunasaikrishna/ChatBotGoogleAssistanceAI.git"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                     className="webbtn2"
-                  >
-      GitHub
-      </a>
-    </div>
-  </div>
-
-          <div className="webproject-card border-purple">
-  <img src={StudentForm} alt="Animated Developer" />
-
-    <h3 className='webprojectName'>Student Details Form</h3>
-    <p className="webprojectSummary">A modern and dynamic student information form built with React JS, styled using CSS and JavaScript for interactivity. The form captures detailed student data such as name, contact, address, and academic background. It features real-time validation, state management, and a responsive UI, making it ideal for digital admissions and academic record-keeping systems.</p>
-
-    <p>Skills: React Js, Spring Boot</p>
-    <div className="liveBt">
-
-      <a
-          href="https://srichaitanyaschool.net/users/login"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                          className="webbtn1"
-                  >
-                          Live
-
-                  </a>
-      {/* <button className="webbtn2">GitHub</button> */}
-
-      
-    </div>
-  </div>
+          <div className="web-project-buttons">
+            {project.liveLink && (
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="webbtn1"
+              >
+                Live
+              </a>
+            )}
+            {project.githubLink && (
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="webbtn2"
+              >
+                GitHub
+              </a>
+            )}
+          </div>
         </div>
+      ))}
+    </div>
 
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.css'; 
+import './Technologies.css'; 
 import {
   SiTypescript,
   SiJavascript,
@@ -10,21 +10,21 @@ import {
   SiKotlin,
   SiXcode
 } from "react-icons/si";
+
 function Technologies() {
   return (
-    <div className="overallDiv">
+    <div className="techOverallDiv">
   
-  <div className="projectsView">
+  <div className="techProjectView">
         <p className="ProjectsTextContent">Technologies</p>
-        <p className="summary">
+        <p className="techSummary">
           Discover my skills and experience in various technologies through my
           personal website, where I share insights and innovative solutions.
         </p>
         <div className="techContainer">
           <div className="techCard">
-          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
- 
-<SiReact style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30  }} />
+          <div className='iconWithTextRow'>
+          <SiReact className="text-[#61DAFB] mr-2 w-5 h-5 md:w-[30px] md:h-[30px]" />
             <p className="techTitle">React JS</p>
             </div>
             <p className="techDesc">
@@ -34,8 +34,7 @@ function Technologies() {
           </div>
  
           <div className="techCard">
-          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
- 
+          <div className='iconWithTextRow'> 
           <SiReact style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30  }} />
  
             <p className="techTitle">React Native</p>
@@ -47,8 +46,8 @@ function Technologies() {
           </div>
  
           <div className="techCard">
-          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
-          <SiHtml5 style={{ color: '#e34c26', marginRight: 6, width: 30, height: 30 }} />
+          <div className='iconWithTextRow'>
+                      <SiHtml5 style={{ color: '#e34c26', marginRight: 6, width: 30, height: 30 }} />
   <SiCss3 style={{ color: '#1572b6', marginRight: 8, width: 30, height: 30 }} />
   <p className="techTitle" style={{ margin: 0 }}>
     HTML & CSS
@@ -62,8 +61,8 @@ function Technologies() {
         </div>
         <div className="techContainer">
   <div className="techCard">
-  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
-  <SiTypescript style={{ color: '#3178c6', marginRight: 8, width: 30, height: 30  }} />
+  <div className='iconWithTextRow'>
+      <SiTypescript style={{ color: '#3178c6', marginRight: 8, width: 30, height: 30  }} />
  
     <p className="techTitle">
       TypeScript & JavaScript
@@ -76,8 +75,8 @@ function Technologies() {
   </div>
  
   <div className="techCard">
-  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
-  <SiJavascript style={{ color: '#f7df1e',marginRight: 8, width: 30, height: 30 }} />
+  <div className='iconWithTextRow'>
+      <SiJavascript style={{ color: '#f7df1e',marginRight: 8, width: 30, height: 30 }} />
  
     <p className="techTitle">
       UI / UX Design
@@ -92,8 +91,8 @@ function Technologies() {
  
   <div className="techCard">
   
-  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
-  <SiKotlin style={{ color: '#7F52FF', marginRight: 8, width: 30, height: 30 }} />
+  <div className='iconWithTextRow'>
+      <SiKotlin style={{ color: '#7F52FF', marginRight: 8, width: 30, height: 30 }} />
  
     <p className="techTitle">
       
@@ -109,8 +108,8 @@ function Technologies() {
  
         <div className="techContainer">
           <div className="techCard">
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
-          {/* <SiSpringboot style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30 }} /> */}
+          <div className='iconWithTextRow'>
+                      {/* <SiSpringboot style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30 }} /> */}
  
  
             <p className="techTitle">Java
@@ -123,8 +122,8 @@ function Technologies() {
           </div>
  
           <div className="techCard">
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
-          <SiXcode style={{ color: '#147EFB', marginRight: 8, width: 30, height: 30 }} />
+          <div className='iconWithTextRow'>
+                      <SiXcode style={{ color: '#147EFB', marginRight: 8, width: 30, height: 30 }} />
   <p className="techTitle">Xcode</p>
 </div>
             <p className="techDesc">
@@ -135,8 +134,8 @@ function Technologies() {
           </div>
  
           <div className="techCard">
-          <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
- 
+          <div className='iconWithTextRow'>
+
           <SiMysql style={{ color: '#00758F', marginRight: 8, width: 50, height: 50 }} />
             <p className="techTitle">SQL</p>
             </div>
@@ -150,19 +149,12 @@ function Technologies() {
         
       </div>
  
-      <div className="AditionalSkilsView">
-      <p
-  style={{
-    color: '#000',
-    fontSize: 34,
-    fontWeight: 1000,
-    fontFamily: 'Poppins',marginLeft:18
-  }}
->
-  Additional technologies and skills
-</p>
+      <div className="techProjectView">
+        <p className="ProjectsTextContent">Additional technologies and skills</p>
+  
 
-        <p className="AditionalSkilsSummary">
+
+        <p className="techSummary">
           Discover my additional skills and expertise, elevating projects to new
           heights of quality and efficiency.
         </p>

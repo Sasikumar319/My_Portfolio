@@ -365,7 +365,6 @@
 
   .contact-wrapper {
     background: #fff;
-    padding: 40px 20px;
     font-family: 'Poppins', sans-serif;
   }
   
@@ -471,6 +470,7 @@
   
     .right-section {
       justify-content: center;
+      margin-right: 0px;
     }
   
     .web-mobile-dev {

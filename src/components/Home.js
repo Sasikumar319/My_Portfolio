@@ -144,34 +144,7 @@ const db = getDatabase(app);
   </div>
 </div>
 
- {showScroll && (
-      <button
-      onClick={scrollToTop}
-      style={{
-        position: 'fixed',
-        bottom: '40px',
-        right: '40px',
-        backgroundColor: '#2563eb', // blue
-        border: 'none',
-        borderRadius: '50%',
-        width: '56px',
-        height: '56px',
-        cursor: 'pointer',
-        boxShadow: '0 8px 20px rgba(37, 99, 235, 0.4)',
-        color: 'white',
-        fontSize: '28px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        transition: 'background-color 0.3s ease',
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1e40af')}
-      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#2563eb')}
-      aria-label="Scroll to top"
-    >
-      ↑
-    </button>
-      )}
+
 
     </div>
   );

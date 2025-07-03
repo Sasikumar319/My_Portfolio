@@ -10,10 +10,10 @@ function AboutMe() {
       <div className="intro-wrapper">
         <div className="intro-text">
         <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
-            Hi, I'm <strong>Sasi Kumar Kuppam</strong>, a Mobile App Developer with 2.6 years of professional experience in building robust and user-friendly Android and cross-platform applications using React Native and Kotlin.
+        Hi, I'm <strong>Sasi Kumar Kuppam</strong>, a Mobile App Developer with 2.6 years of professional experience in building robust and user-friendly Android and cross-platform applications using React Native and Kotlin.
           </p>
           <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
-            Based in Hyderabad, I specialize in crafting scalable apps integrated with REST APIs, Firebase, and modern mobile development tools. I'm passionate about delivering high-performance solutions that solve real-world problems.
+          Based in Hyderabad, I specialize in developing scalable mobile applications integrated with REST APIs, Firebase, and modern development tools. I am passionate about delivering high-performance, real-world solutions that enhance user experience and drive results.
           </p>
         </div>
 

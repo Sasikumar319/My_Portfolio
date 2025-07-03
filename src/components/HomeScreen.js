@@ -214,14 +214,11 @@ const HomeScreen = () => {
     
     useEffect(() => {
       const handleScroll = () => {
-        if (window.pageYOffset > 300) {
-          setShowScroll(true);
-        } else {
-          setShowScroll(false);
-        }
+        setShowScroll(window.scrollY > 300);
       };
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
+  
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
     }, []);
   
     const scrollToTop = () => {
@@ -238,6 +235,7 @@ const HomeScreen = () => {
       const borderClasses = ['border-blue', 'border-green', 'border-purple'];
 
   return (
+    <>
     <div className="home-section">
 
         <div className="home-container">
@@ -665,7 +663,38 @@ Crafting visually stunning and functional experiences - I'm a Frontend
   <p>© 2025 Sasi Kumar Kuppam. All rights reserved.</p>
 </footer>
 
+{showScroll && (
+        <button
+          onClick={scrollToTop}
+          style={{
+            position: 'fixed',
+            bottom: '40px',
+            right: '40px',
+            backgroundColor: '#2563eb',
+            border: 'none',
+            borderRadius: '50%',
+            width: '56px',
+            height: '56px',
+            cursor: 'pointer',
+            boxShadow: '0 8px 20px rgba(37, 99, 235, 0.4)',
+            color: 'white',
+            fontSize: '28px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            transition: 'background-color 0.3s ease',
+            zIndex: 9999, // ensure it's above all content
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1e40af')}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#2563eb')}
+          aria-label="Scroll to top"
+        >
+          ↑
+        </button>
+      )}
     </div>
+    
+    </>
   );
 };
 
