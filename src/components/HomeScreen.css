@@ -257,7 +257,7 @@
   .home-webprojectName {
     font-size: 20px;
     font-weight: 700;
-    color: #111827;
+    color: #1549b9;
     margin-top: 16px;
   }
   
@@ -460,12 +460,15 @@
       flex-direction: column;
       text-align: center;
       margin-top: 10px;
+      
  
     }
    
   
     .left-section {
       margin-bottom: 20px;
+ 
+    padding-right: 40px;
     }
   
     .right-section {

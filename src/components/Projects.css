@@ -107,3 +107,60 @@
   .p1Image{
     margin-bottom: 5px;
   }
+  .project-titles {
+    font-size: 18px;
+    font-weight: bold;
+    color: #265cd1;
+    margin-bottom: 8px;
+  }
+  
+  .home-webprojectsViews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 20px;
+  }
+  .home-webprojectNames {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f51df;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .home-projects-sections {
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 10px;
+    }
+    .MobileTexts{
+      color: black;
+      font-size: 34px;
+      font-weight: 700;
+      margin-left: 28px;
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+      padding-left: 40px;
+    }
+  @media (max-width: 768px) {
+    .home-webprojectNames {
+      font-size: 20px;
+      font-weight: 700;
+      color: #5e89e6;
+      margin-top: 16px;
+      text-align: center;
+    }
+    .project-titles {
+      font-size: 18px;
+      font-weight: bold;
+      color: #265cd1;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    
+ 
+    
+  }
+   

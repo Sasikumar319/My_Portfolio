@@ -28,7 +28,7 @@ function Projects() {
     cards.forEach(card => observer.observe(card));
     return () => observer.disconnect();
   }, []);
-
+  const borderClasses = ['border-blue', 'border-green', 'border-purple'];
   const webProjectData = [
     {
       title: 'Chess AI',
@@ -57,9 +57,89 @@ function Projects() {
       skills: 'React JS, Spring Boot',
       image: StudentForm,
       liveLink: 'https://srichaitanyaschool.net/users/login',
-      githubLink: '', 
+      githubLink: '', // GitHub link not provided
       borderClass: 'border-purple',
     },
+  ];
+
+  const mobileProjectData1 = [
+    {
+      title: 'SC Employee App',
+      description:
+        'An all-in-one mobile solution designed for college management. This app enables employees to check daily student attendance, track employee presence, manage new admissions, and monitor campus cleaning tasks. Built with React Native for Android, it streamlines daily operations and enhances staff productivity within the institution.',
+        image: Parent,
+      liveLink: 'https://play.google.com/store/apps/details?id=apps.srichaitanya.employee&pcampaignid=web_share',
+      githubLink: '#',
+    },
+    {
+      title: 'SC Parent App',
+      description:
+        'A dedicated mobile app for parents to stay connected with their child’s academic journey. It provides real-time access to student data including attendance, marks, performance reports, fee details, and more. Designed with React Native for Android.',
+        image: Employee,
+      liveLink: 'https://play.google.com/store/apps/details?id=com.srichaitanya.parent&pcampaignid=web_share',
+      githubLink: '#',
+    },
+    {
+      title: 'QR Scanner',
+      description:
+        ' A fast and reliable QR code scanning app built with React Native.',
+        image: Qr,
+      liveLink: '#',
+      githubLink: 'https://github.com/Sasikumar319/QrBarcodeScanner',
+    },
+  ];
+  const mobileProjectData2 = [
+    {
+      title: 'Street View App',
+      description:
+        ' A powerful street-level navigation tool leveraging the Google Maps Street View API.… ',
+        image: StreetView,
+      liveLink: 'https://play.google.com/store/apps/details?id=apps.srichaitanya.employee&pcampaignid=web_share',
+      githubLink: '#',
+    },
+    {
+      title: 'Google Map Directions',
+      description:
+        'A smart location-based tool using the Google Maps API',
+        image: GoogleMap,
+      liveLink: 'https://play.google.com/store/apps/details?id=com.srichaitanya.parent&pcampaignid=web_share',
+      githubLink: '#',
+    },
+    {
+      title: 'Customize Camera & Crop',
+      description:
+        'A customizable React Native camera with built-in cropping features.… ',
+        image: CropImage,
+      liveLink: '#',
+      githubLink: 'https://play.google.com/store/apps/details?id=apps.srichaitanya.employee&pcampaignid=web_share',
+    },
+  ];
+  const mobileProjectData3 = [
+    {
+      title: 'Tic Tac Toe App',
+      description:
+        'A fun and interactive Tic Tac Toe game built with React Native.',
+        image: TicTacToeImage,
+      liveLink: 'https://github.com/Sasikumar319/TikTacToe',
+      githubLink: '#',
+    },
+    {
+      title: 'Medicine Reminder App',
+      description:
+        'A simple and intuitive app to schedule medicine reminders and track dosages Ideal for elderly users or anyone managing multiple prescriptions.',
+        image: MedicineImage,
+      liveLink: 'https://github.com/Sasikumar319/MedicineNotificationReminder',
+      githubLink: '#',
+    },
+    {
+      title: 'Keep Notes',
+      description:
+        'A smart location-based tool using the Google Maps API',
+        image: GoogleMap,
+      liveLink: 'https://play.google.com/store/apps/details?id=com.srichaitanya.parent&pcampaignid=web_share',
+      githubLink: '#',
+    },
+
   ];
   return (
     <div className="projectOverallDiv">
@@ -77,261 +157,144 @@ function Projects() {
 
 
 
-        <p className="MobileText">Mobile Projects</p>
-        <div className="mobileProjectsView">
-          <div className="mobileproject-card border-purple">
-            <div className="cardContent">
-              <img
-                src={Employee}
-                alt="Animated Developer"
-                className="p1Image"
-              />
+        <p className="MobileTexts">Mobile Projects</p>
 
-              <div className="cardText">
-                <h3 className="projectName">SC Employee App</h3>
-                <p className="projectSummary">
-                  An all-in-one mobile solution designed for college management.
-                  This app enables employees to check daily student attendance,
-                  track employee presence, manage new admissions, and monitor
-                  campus cleaning tasks. Built with React Native for Android, it
-                  streamlines daily operations and enhances staff productivity
-                  within the institution.
-                </p>
-                <p>Skills: Android, React Native(ios)</p>
+        <div className="home-projects-sections">
+<div className="projects-wrapper">
+  {mobileProjectData1.map((project, index) => {
+    const randomBorder = borderClasses[Math.floor(Math.random() * borderClasses.length)];
 
-                <div className="buttons">
-                  <a
-                    href="https://play.google.com/store/apps/details?id=apps.srichaitanya.employee&pcampaignid=web_share"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className="btn1">Live</button>
-                  </a>
-
-                  <button className="btn2">GitHub</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mobileproject-card border-purple">
-            <div className="cardContent">
-              <img src={Parent} alt="Animated Developer" className="p1Image" />
-
-              <div className="cardText">
-                <h3 className="projectName">SC Parent App</h3>
-                <p className="projectSummary">
-                  A dedicated mobile app for parents to stay connected with
-                  their child’s academic journey. It provides real-time access
-                  to student data including attendance, marks, performance
-                  reports, fee details, and more. Designed with React Native for
-                  Android, the app ensures transparent communication between
-                  parents and the institution.
-                </p>
-                <p>Skills: Android, React Native(ios)</p>
-
-                <div className="buttons">
-                <a
-                    href="https://play.google.com/store/apps/details?id=com.srichaitanya.parent&pcampaignid=web_share"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className="btn1">Live</button>
-                  </a>
-                  <button className="btn2">GitHub</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mobileproject-card border-green">
-            <div className="cardContent">
-              <img
-                src={Qr}
-                alt="Animated Developer"
-                className="p1Image"
-              />
-
-              <div className="cardText">
-                <h3 className="projectName">QR Scanner</h3>
-                <p className="projectSummary">
-                  A fast and reliable QR code scanning app built with React Native.…  
-                </p>
-                <p>Skills: Android, React Native</p>
-                <div className="buttons">
-                  <button className="btn1">Live</button>
-                  <a
-                    href="https://github.com/Sasikumar319/QrBarcodeScanner"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                  <button className="btn2">GitHub</button>
-
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+    return (
+      <div className={`project-card-div ${randomBorder}`} key={index}>
+        <div className="project-image">
+          <img src={project.image} alt={project.title} />
         </div>
 
-        <div className="mobileProjectsView">
-          <div className="mobileproject-card border-purple">
-            <div className="cardContent">
-              <img
-                src={StreetView}
-                alt="Animated Developer"
-                className="p1Image"
-              />
-
-              <div className="cardText">
-                <h3 className="projectName">Street View App</h3>
-                <p className="projectSummary">
-                  A powerful street-level navigation tool leveraging the Google Maps Street View API.…  
-                </p>
-                <p>Skills: Android, React Native(ios)</p>
-
-                <div className="buttons">
-                  <a
-                    href="https://play.google.com/store/apps/details?id=apps.srichaitanya.employee&pcampaignid=web_share"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className="btn1">Live</button>
-                  </a>
-
-                  <button className="btn2">GitHub</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mobileproject-card border-purple">
-            <div className="cardContent">
-              <img src={GoogleMap} alt="Animated Developer" className="p1Image" />
-
-              <div className="cardText">
-                <h3 className="projectName">Google Map Directions</h3>
-                <p className="projectSummary">
-                  A smart location-based tool using the Google Maps API.…  
-                </p>
-                <p>Skills: Android, React Native(ios)</p>
-
-                <div className="buttons">
-                <a
-                    href="https://play.google.com/store/apps/details?id=com.srichaitanya.parent&pcampaignid=web_share"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className="btn1">Live</button>
-                  </a>
-                  <button className="btn2">GitHub</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mobileproject-card border-purple">
-            <div className="cardContent">
-              <img
-                src={CropImage}
-                alt="Animated Developer"
-                className="p1Image"
-              />
-
-              <div className="cardText">
-                <h3 className="projectName">Customize Camera & Crop</h3>
-                <p className="projectSummary">
-                  A customizable React Native camera with built-in cropping features.…  
-                </p>
-                <p>Skills: Android, React Native (ios)</p>
-
-                <div className="buttons">
-                  <a
-                    href="https://play.google.com/store/apps/details?id=apps.srichaitanya.employee&pcampaignid=web_share"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className="btn1">Live</button>
-                  </a>
-
-                  <button className="btn2">GitHub</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mobileProjectsView">
-       
-          <div className="mobileproject-card border-purple">
-            <div className="cardContent">
-              <img src={TicTacToeImage} alt="Animated Developer" className="p1Image" />
-
-              <div className="cardText">
-                <h3 className="projectName">Tic Tac Toe App</h3>
-                <p className="projectSummary">
-                  A fun and interactive Tic Tac Toe game built with React Native.…  
-                </p>
-                <p>Skills: Android, React Native (ios)</p>
-
-                <div className="buttons">
-                <a
-                    href="https://github.com/Sasikumar319/TikTacToe"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className="btn1">Live</button>
-                  </a>
-                  <button className="btn2">GitHub</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="mobileproject-card border-green">
-            <div className="cardContent">
-              <img
-                src={MedicineImage}
-                alt="Animated Developer"
-                className="p1Image"
-              />
-
-              <div className="cardText">
-                <h3 className="projectName">Medicine Reminder App</h3>
-                <p className="projectSummary">
-A simple and intuitive app to schedule medicine reminders and track dosages.
-Ideal for elderly users or anyone managing multiple prescriptions.
-                </p>
-                <p>Skills:  React Native(Android \ ios) , JS </p>
-                <div className="buttons">
-                  <button className="btn1">Live</button>
-                  <a
-                    href="https://github.com/Sasikumar319/MedicineNotificationReminder"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                  <button className="btn2">GitHub</button>
-
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-
-
-
-        <div className="home-projects">
-<h4 className="mobile-ProjectsText">Web Projects</h4>
+        <div className="project-content">
+          <h2 className="project-titles">{project.title}</h2>
+          <p className="project-description">{project.description}</p>
+          <div className="project-buttons">
+  <a
+    href={project.liveLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="liveBtn"
+  >
+    Live
+  </a>
+  <a
+    href={project.githubLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="gitBtn"
+  >
+    GitHub
+  </a>
 </div>
 
-<div className="home-webprojectsView">
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+
+</div>
+
+<div className="home-projects-sections">
+<div className="projects-wrapper">
+  {mobileProjectData2.map((project, index) => {
+    const randomBorder = borderClasses[Math.floor(Math.random() * borderClasses.length)];
+
+    return (
+      <div className={`project-card-div ${randomBorder}`} key={index}>
+        <div className="project-image">
+          <img src={project.image} alt={project.title} />
+        </div>
+
+        <div className="project-content">
+          <h2 className="project-titles">{project.title}</h2>
+          <p className="project-description">{project.description}</p>
+          <div className="project-buttons">
+  <a
+    href={project.liveLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="liveBtn"
+  >
+    Live
+  </a>
+  <a
+    href={project.githubLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="gitBtn"
+  >
+    GitHub
+  </a>
+</div>
+
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+
+</div>
+<div className="home-projects-sections">
+<div className="projects-wrapper">
+  {mobileProjectData3.map((project, index) => {
+    const randomBorder = borderClasses[Math.floor(Math.random() * borderClasses.length)];
+
+    return (
+      <div className={`project-card-div ${randomBorder}`} key={index}>
+        <div className="project-image">
+          <img src={project.image} alt={project.title} />
+        </div>
+
+        <div className="project-content">
+          <h2 className="project-titles">{project.title}</h2>
+          <p className="project-description">{project.description}</p>
+          <div className="project-buttons">
+  <a
+    href={project.liveLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="liveBtn"
+  >
+    Live
+  </a>
+  <a
+    href={project.githubLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="gitBtn"
+  >
+    GitHub
+  </a>
+</div>
+
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+
+</div>
+
+
+
+<h4 className="MobileTexts">Web Projects</h4>
+
+
+<div className="home-webprojectsViews">
       {webProjectData.map((project, index) => (
         <div className={`home-webproject-card ${project.borderClass}`} key={index}>
           <img src={project.image} alt={project.title} className='' />
 
-          <h3 className="home-webprojectName mt-5">{project.title}</h3>
+          <h3 className="home-webprojectNames">{project.title}r</h3>
           <p className="home-webprojectSummary">{project.description}</p>
           <p style={{ marginBottom: 10 }}><strong>Skills:</strong> {project.skills}</p>
 
@@ -360,18 +323,6 @@ Ideal for elderly users or anyone managing multiple prescriptions.
         </div>
       ))}
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
   );

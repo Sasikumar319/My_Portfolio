@@ -12,6 +12,7 @@ import {
 } from "react-icons/si";
 
 function Technologies() {
+ 
   return (
     <div className="techOverallDiv">
   

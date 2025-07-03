@@ -367,7 +367,7 @@ const HomeScreen = () => {
         <div className={`home-webproject-card ${project.borderClass}`} key={index}>
           <img src={project.image} alt={project.title} className='' />
 
-          <h3 className="home-webprojectName mt-5">{project.title}</h3>
+          <h3 className="home-webprojectName">{project.title}</h3>
           <p className="home-webprojectSummary">{project.description}</p>
           <p style={{ marginBottom: 10 }}><strong>Skills:</strong> {project.skills}</p>
 
