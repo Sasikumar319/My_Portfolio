@@ -242,9 +242,10 @@ const HomeScreen = () => {
 
 {/* Left Section */}
 <div className="left-section flex-1 text-left space-y-4">
-  <p className="gradient-text text-3xl md:text-5xl font-bold ">
-    Hello, I'm Sasi Kumar
-  </p>
+<p className="gradient-text text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold outlined-text">
+  Hello, I'm Sasi Kumar
+</p>
+
   <p className=" text-black web-mobile-dev text-2xl md:text-4xl font-bold ">
     Mobile App Developer (React Native / Android)
   </p>
