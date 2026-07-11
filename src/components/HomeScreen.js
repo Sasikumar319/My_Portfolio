@@ -1,20 +1,13 @@
-// ContactSection.js
 import React, { useEffect, useState } from 'react';
-import './HomeScreen.css'; 
-import devImage from "../assets/Sasi photo.jpg";
+import './HomeScreen.css';
+import devImage from '../assets/Sasi photo.jpg';
+import GoogleMap from '../assets/googleMap.jpeg';
+import Employee from '../assets/employe.jpeg';
+import Parent from '../assets/parent.jpeg';
+import Chess from '../assets/chess.png';
+import AI from '../assets/AI.png';
+import StudentForm from '../assets/image.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import GoogleMap from "../assets/googleMap.jpeg";
-import Employee from "../assets/employe.jpeg";
-import Parent from "../assets/parent.jpeg";
-import Chess from "../assets/chess.png";
-import AI from "../assets/AI.png";
-import StudentForm from "../assets/image.png";
-import { initializeApp } from "firebase/app";
-import { getDatabase, push, ref } from "firebase/database";
-import { firebaseConfig } from "./firebaseConfig";
-import ContactSection from "./ContactSection";
 import {
   faCode,
   faMobileAlt,
@@ -24,678 +17,453 @@ import {
   faCogs,
 } from '@fortawesome/free-solid-svg-icons';
 import {
-    SiTypescript,
-    SiJavascript,
-    SiSpringboot,
-    SiJava,
-    SiPython,
-    SiMysql,
-    SiReact,
-    SiHtml5,
-    SiCss3,
-    SiKotlin,
-    SiXcode
-  } from "react-icons/si";
-  import { FaPaintBrush } from "react-icons/fa";
+  SiTypescript,
+  SiJavascript,
+  SiMysql,
+  SiReact,
+  SiHtml5,
+  SiCss3,
+  SiKotlin,
+  SiXcode,
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, push, ref } from 'firebase/database';
+import { firebaseConfig } from './firebaseConfig';
+import ContactSection from './ContactSection';
+import { LINKEDIN_URL, GITHUB_URL } from '../constants/social';
 
 const expertiseData = [
-    {
-      title: 'React Native Expertise',
-      description:
-      'Proficient in React Native for building cross-platform mobile applications. Skilled in integrating APIs and developing efficient, scalable mobile solutions.',
-        iconColor: '#8e44ad',
-        borderClass: 'border-purple',
-      icon: faCode,
-    },
-    {
-      title: 'Mobile-First Approach',
-      description:
-        'Expert in designing and developing mobile-first applications tailored for both Android and iOS platforms with consistent performance.',
-        iconColor: '#27ae60',
-        borderClass: 'border-green',
-      icon: faMobileAlt,
-    },
-    {
-      title: 'Fast & Scalable',
-      description:
-        'I create fast-loading, scalable applications using modern frameworks and optimized data flow handling for better user experiences.',
-        iconColor: '#2980b9',
-    borderClass: 'border-blue',
-      icon: faRocket,
-    },
-    {
-      title: 'User-Friendly Interface',
-      description:
-        'Strong UI/UX design focus. Build clean, intuitive, and responsive user interfaces that enhance usability and engagement.',
-        iconColor: '#e67e22',
-        borderClass: 'border-purple',
-      icon: faPalette,
-    },
-    {
-      title: 'Problem Solver',
-      description:
-        'Adept at analyzing requirements, troubleshooting issues, and implementing effective solutions for complex problems.',
-        iconColor: '#c0392b',
-        borderClass: 'border-green',
-      icon: faLightbulb,
-    },
-    {
-      title: 'Scalable Solutions',
-      description:
-        'Capable of designing scalable system architectures to accommodate growth and ensure long-term performance and maintainability.',
-        iconColor: '#16a085',
-        borderClass: 'border-blue',
-      icon: faCogs,
-    },
-  ];
+  {
+    title: 'React Native',
+    description:
+      'Cross-platform mobile apps with clean architecture, API integration, and native-feel performance.',
+    icon: faCode,
+  },
+  {
+    title: 'Mobile-First',
+    description:
+      'Android and iOS experiences designed for real devices — fast, consistent, and reliable.',
+    icon: faMobileAlt,
+  },
+  {
+    title: 'Fast & Scalable',
+    description:
+      'Optimized data flow and modern frameworks so apps stay smooth as they grow.',
+    icon: faRocket,
+  },
+  {
+    title: 'Clear Interfaces',
+    description:
+      'Intuitive UI patterns that make complex school and business workflows easy to use.',
+    icon: faPalette,
+  },
+  {
+    title: 'Problem Solver',
+    description:
+      'Requirements to shipping — debugging, delivery, and practical solutions under real constraints.',
+    icon: faLightbulb,
+  },
+  {
+    title: 'Solid Architecture',
+    description:
+      'Maintainable structure for long-lived products — modules, state, and release-ready builds.',
+    icon: faCogs,
+  },
+];
 
-  const mobileProjectData = [
-    {
-      title: 'SC Employee App',
-      description:
-        'An all-in-one mobile solution designed for college management. This app enables employees to check daily student attendance, track employee presence, manage new admissions, and monitor campus cleaning tasks. Built with React Native for Android, it streamlines daily operations and enhances staff productivity within the institution.',
-        image: Parent,
-      liveLink: 'https://play.google.com/store/apps/details?id=apps.srichaitanya.employee&pcampaignid=web_share',
-      githubLink: '#',
-    },
-    {
-      title: 'SC Parent App',
-      description:
-        'A dedicated mobile app for parents to stay connected with their child’s academic journey. It provides real-time access to student data including attendance, marks, performance reports, fee details, and more. Designed with React Native for Android.',
-        image: Employee,
-      liveLink: 'https://play.google.com/store/apps/details?id=com.srichaitanya.parent&pcampaignid=web_share',
-      githubLink: '#',
-    },
-    {
-      title: 'Google Map Directions',
-      description:
-        'A smart location-based tool that uses the Google Maps API to provide real-time directions and calculate the distance between two points. It supports route visualization, travel time estimation, and multiple travel modes like driving, walking, or transit.',
-        image: GoogleMap,
-      liveLink: '#',
-      githubLink: 'https://github.com/Sasikumar319/GoogleMapLive',
-    },
-  ];
-  const webProjectData = [
-    {
-      title: 'Chess AI',
-      description:
-        'An interactive chess game built using React JS that allows users to play classic chess with a clean UI and responsive design. The game supports all standard chess rules, legal move validation, check/checkmate detection, and smooth gameplay transitions.',
-      skills: 'React JS',
-      image: Chess,
-      liveLink: '#',
-      githubLink: 'https://github.com/Sasikumar319/chess-ai',
-      borderClass: 'border-blue',
-    },
-    {
-      title: 'Chat & Voice Assistance AI',
-      description:
-        'A smart AI-powered assistant built with React JS, Python, and FastAPI. It can respond to user queries and perform tasks like weather updates, reminders, and general Q&A using AI and NLP.',
-      skills: 'React JS, Python, FastAPI, SpeechRecognition',
-      image: AI,
-      liveLink: '#',
-      githubLink: 'https://github.com/Sasikumar319/ChatBotGoogleAssistanceAI',
-      borderClass: 'border-green',
-    },
-    {
-      title: 'Student Details Form',
-      description:
-        'A modern and dynamic student information form built with React JS and Spring Boot. It features real-time validation, state management, and a responsive UI, ideal for digital admissions.',
-      skills: 'React JS, Spring Boot',
-      image: StudentForm,
-      liveLink: 'https://srichaitanyaschool.net/users/login',
-      githubLink: '', // GitHub link not provided
-      borderClass: 'border-purple',
-    },
-  ];
+const mobileProjectData = [
+  {
+    title: 'SC Employee App',
+    description:
+      'College operations in one app — attendance, admissions, staff presence, and campus tasks. Built with React Native for Android.',
+    image: Parent,
+    liveLink:
+      'https://play.google.com/store/apps/details?id=apps.srichaitanya.employee&pcampaignid=web_share',
+    githubLink: '#',
+  },
+  {
+    title: 'SC Parent App',
+    description:
+      'Parents stay connected to attendance, marks, fees, and performance — real-time student updates on Android.',
+    image: Employee,
+    liveLink:
+      'https://play.google.com/store/apps/details?id=com.srichaitanya.parent&pcampaignid=web_share',
+    githubLink: '#',
+  },
+  {
+    title: 'Google Map Directions',
+    description:
+      'Live routes and distance with Google Maps API — driving, walking, and transit modes.',
+    image: GoogleMap,
+    liveLink: '#',
+    githubLink: 'https://github.com/Sasikumar319/GoogleMapLive',
+  },
+];
 
-const HomeScreen = () => {
+const webProjectData = [
+  {
+    title: 'Chess AI',
+    description:
+      'Classic chess in React with legal moves, check detection, and a clean playable UI.',
+    skills: 'React JS',
+    image: Chess,
+    liveLink: '#',
+    githubLink: 'https://github.com/Sasikumar319/chess-ai',
+  },
+  {
+    title: 'Chat & Voice AI',
+    description:
+      'Assistant for Q&A, weather, and reminders — React, Python, FastAPI, and speech recognition.',
+    skills: 'React JS, Python, FastAPI',
+    image: AI,
+    liveLink: '#',
+    githubLink: 'https://github.com/Sasikumar319/ChatBotGoogleAssistanceAI',
+  },
+  {
+    title: 'Student Details Form',
+    description:
+      'Admissions-ready form with validation and responsive UI — React and Spring Boot.',
+    skills: 'React JS, Spring Boot',
+    image: StudentForm,
+    liveLink: 'https://srichaitanyaschool.net/users/login',
+    githubLink: '',
+  },
+];
 
-    const [name, setName] = useState('');
-    const [mobile, setMobile] = useState('');
-    const [message, setMessage] = useState('');
-    const [showSuccessText, setShowSuccessText] = useState(false); // state to control <p> visibility
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-    const [showScroll, setShowScroll] = useState(false);
-  
-  
-    const handleSend = () => {
-      // Trim inputs to avoid blank spaces
-      const trimmedName = name.trim();
-      const trimmedMobile = mobile.trim();
-      const trimmedMessage = message.trim();
-    
-      // Validation
-      if (!trimmedName) {
-        alert("Please enter your name.");
-        return;
-      }
-    
-      if (!trimmedMobile) {
-        alert("Please enter your mobile number.");
-        return;
-      }
-    
-      if (!/^\d{10}$/.test(trimmedMobile)) {
-        alert("Please enter a valid 10-digit mobile number.");
-        return;
-      }
-    
-      if (!trimmedMessage) {
-        alert("Please enter your message.");
-        return;
-      }
-    
-      // If validation passes, proceed
-      console.log("handleSend");
-    
-      push(ref(db, 'submissions/'), {
-        name: trimmedName,
-        mobile: trimmedMobile,
-        message: trimmedMessage,
-        timestamp: new Date().toISOString(),
+const techStack = [
+  { name: 'React JS', desc: 'Component-driven web apps', Icon: SiReact, color: '#61DAFB' },
+  { name: 'React Native', desc: 'Cross-platform mobile', Icon: SiReact, color: '#61DAFB' },
+  { name: 'HTML & CSS', desc: 'Structure and responsive layout', Icons: [SiHtml5, SiCss3], colors: ['#e34c26', '#1572b6'] },
+  { name: 'TypeScript', desc: 'Typed, maintainable JS', Icon: SiTypescript, color: '#3178c6' },
+  { name: 'JavaScript', desc: 'Core language for web & mobile', Icon: SiJavascript, color: '#c5a100' },
+  { name: 'Kotlin', desc: 'Modern Android development', Icon: SiKotlin, color: '#7F52FF' },
+  { name: 'Java', desc: 'OOP backends & Android', Icon: FaJava, color: '#007396' },
+  { name: 'Xcode', desc: 'iOS build & debug workflows', Icon: SiXcode, color: '#147EFB' },
+  { name: 'SQL', desc: 'Relational data & queries', Icon: SiMysql, color: '#00758F' },
+];
+
+const extraSkills = [
+  'Git & GitHub',
+  'Android Studio',
+  'Postman',
+  'VS Code',
+  'Xcode',
+  'Swagger',
+  'Play & App Store',
+  'Firebase Console',
+];
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const RESUME_PATH = process.env.PUBLIC_URL + '/Sasi_3years_resume.pdf';
+const RESUME_FILENAME = 'Sasi_Kumar_3years_Resume.pdf';
+
+const HomeScreen = ({ onNavigate }) => {
+  const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [message, setMessage] = useState('');
+  const [showSuccessText, setShowSuccessText] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
+
+  const handleSend = () => {
+    const trimmedName = name.trim();
+    const trimmedMobile = mobile.trim();
+    const trimmedMessage = message.trim();
+
+    if (!trimmedName) {
+      alert('Please enter your name.');
+      return;
+    }
+    if (!trimmedMobile) {
+      alert('Please enter your mobile number.');
+      return;
+    }
+    if (!/^\d{10}$/.test(trimmedMobile)) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+    if (!trimmedMessage) {
+      alert('Please enter your message.');
+      return;
+    }
+
+    push(ref(db, 'submissions/'), {
+      name: trimmedName,
+      mobile: trimmedMobile,
+      message: trimmedMessage,
+      timestamp: new Date().toISOString(),
+    })
+      .then(() => {
+        setShowSuccessText(true);
+        setName('');
+        setMobile('');
+        setMessage('');
+        setTimeout(() => setShowSuccessText(false), 5000);
       })
-        .then(() => {
-          setShowSuccessText(true);
-          console.log("Data saved successfully");
-    
-          // Clear form
-          setName('');
-          setMobile('');
-          setMessage('');
-    
-          // Hide success message after 5 seconds
-          setTimeout(() => setShowSuccessText(false), 5000);
-        })
-        .catch((error) => {
-          console.error("Error sending message:", error);
-        });
-    };
-    
-    useEffect(() => {
-      const handleScroll = () => {
-        setShowScroll(window.scrollY > 300);
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-  
-    const scrollToTop = () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+      .catch((error) => {
+        console.error('Error sending message:', error);
+      });
+  };
 
-    useEffect(() => {
-        AOS.init({
-          duration: 1000,
-          once: true, 
-        });
-      }, []);
+  useEffect(() => {
+    const handleScroll = () => setShowScroll(window.scrollY > 300);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-      const borderClasses = ['border-blue', 'border-green', 'border-purple'];
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <>
-    <div className="home-section">
+    <div className="home-screen">
+      <section className="hero">
+        <div className="hero__orb hero__orb--1" aria-hidden="true" />
+        <div className="hero__orb hero__orb--2" aria-hidden="true" />
 
-        <div className="home-container">
+        <div className="hero__inner section-shell">
+          <div className="hero__copy">
+            <div className="hero__badge">
+              <span className="hero__badge-dot" aria-hidden="true" />
+              Available for work · Mobile Developer
+            </div>
 
-{/* Left Section */}
-<div className="left-section flex-1 text-left space-y-4">
-<p className="gradient-text text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold outlined-text">
-  Hello, I'm Sasi Kumar
-</p>
+            <h1 className="hero__name">
+              Hi, I&apos;m <span className="hero__name-accent">Sasi Kumar</span>
+            </h1>
 
-  <p className=" text-black web-mobile-dev text-2xl md:text-4xl font-bold ">
-    Mobile App Developer (React Native / Android)
-  </p>
-  <p className="line3 text-gray-600 max-w-xl text-sm md:text-base">
-    With 2.6 years of experience, I specialize in building high-performance mobile apps using React Native and Kotlin. I focus on creating user-friendly, scalable applications for Android and iOS platforms.
-  </p>
-</div>
+            <p className="hero__tagline">
+              I build <strong>React Native</strong> &amp; <strong>Kotlin</strong> apps that ship to the Play Store and feel truly native.
+            </p>
 
+            <p className="hero__lead">
+              3 years turning ideas into mobile products — from school apps used daily by thousands to polished cross-platform experiences.
+            </p>
 
-{/* Right Section */}
-<div className="right-section flex justify-center items-center">
-<div className="outer-border w-72 h-96 md:w-[370px] md:h-[450px]">
-<div className="image-container w-full h-full">
-<img src={devImage} alt="Developer" className="fixed-photo object-cover w-full h-full rounded-3xl" />
-</div>
-</div>
-</div>
-</div>
-
-<div className="resume-buttons">
-  <a
-    href={process.env.PUBLIC_URL + '/Sasi Kumar kuppam.pdf'}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="resume-button1"
-  >
-    👁️ View Resume
-  </a>
-  <button
-    className="resume-button2"
-    onClick={() => {
-      const link = document.createElement('a');
-      link.href = '/Sasi Kumar Kuppam.pdf';
-      link.download = 'Resume.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }}
-  >
-    ⬇️ Download Resume
-  </button>
-</div>
-
-
-<div className="expertise-section">
-  <div className="expertise-grid">
-    {expertiseData.map((card, index) => (
-      <div key={index} className="expertise-card">
-<div className="icon-wrapper" style={{ color: card.iconColor }}>
-  <FontAwesomeIcon icon={card.icon} className="text-xl md:text-2xl" />
-  <h3 className="text-base md:text-lg font-semibold mt-2">{card.title}</h3>
-</div>
-
-        <p className="text-gray-700 mt-3 text-sm">{card.description}</p>
-      </div>
-    ))}
-  </div>
-</div>
-
-
-<div className="home-projects">
-<h4 className="home-ProjectsText">Projects</h4>
-<p className="text-gray-700 mt-3 text-base md:text-lg">
-    Explore a showcase of my creative and innovative projects — from UI design to full-stack development — demonstrating how I bring ideas to life and contribute real value to every endeavor.
-  </p>
-        </div>
-
-        <div className="home-projects">
-<h4 className="mobile-ProjectsText">Mobile Projects</h4>
-</div>
-
-<div className="home-projects-section">
-<div className="projects-wrapper">
-  {mobileProjectData.map((project, index) => {
-    const randomBorder = borderClasses[Math.floor(Math.random() * borderClasses.length)];
-
-    return (
-      <div className={`project-card-div ${randomBorder}`} key={index}>
-        <div className="project-image">
-          <img src={project.image} alt={project.title} />
-        </div>
-
-        <div className="project-content">
-          <h2 className="project-title">{project.title}</h2>
-          <p className="project-description">{project.description}</p>
-          <div className="project-buttons">
-  <a
-    href={project.liveLink}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="liveBtn"
-  >
-    Live
-  </a>
-  <a
-    href={project.githubLink}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="gitBtn"
-  >
-    GitHub
-  </a>
-</div>
-
-        </div>
-      </div>
-    );
-  })}
-</div>
-
-
-</div>
-
-<div className="home-projects">
-<h4 className="mobile-ProjectsText">Web Projects</h4>
-</div>
-
-<div className="home-webprojectsView">
-      {webProjectData.map((project, index) => (
-        <div className={`home-webproject-card ${project.borderClass}`} key={index}>
-          <img src={project.image} alt={project.title} className='' />
-
-          <h3 className="home-webprojectName">{project.title}</h3>
-          <p className="home-webprojectSummary">{project.description}</p>
-          <p style={{ marginBottom: 10 }}><strong>Skills:</strong> {project.skills}</p>
-
-          <div className="web-project-buttons">
-            {project.liveLink && (
+            <div className="hero__actions">
               <a
-                href={project.liveLink}
+                href={RESUME_PATH}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="webbtn1"
+                className="btn btn--primary"
               >
-                Live
+                View Resume
               </a>
-            )}
-            {project.githubLink && (
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="webbtn2"
+              <button
+                type="button"
+                className="btn btn--ghost"
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = RESUME_PATH;
+                  link.download = RESUME_FILENAME;
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
               >
+                Download Resume
+              </button>
+              {onNavigate && (
+                <button type="button" className="btn btn--text" onClick={() => onNavigate('projects')}>
+                  View Projects →
+                </button>
+              )}
+            </div>
+
+            <div className="hero__socials">
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="hero__social-link">
+                LinkedIn
+              </a>
+              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="hero__social-link">
                 GitHub
               </a>
-            )}
+            </div>
+          </div>
+
+          <div className="hero__visual">
+            <div className="hero__ring" aria-hidden="true" />
+            <div className="hero__photo-wrap">
+              <img src={devImage} alt="Sasi Kumar Kuppam" className="hero__photo" />
+            </div>
+            <div className="hero__float-card">
+              <span className="hero__float-label">Stack</span>
+              <span>React Native · Kotlin · Android</span>
+            </div>
           </div>
         </div>
-      ))}
-    </div>
+      </section>
 
-    <div className="home-projects">
-<h4 className="mobile-ProjectsText">Technologies</h4>
-<p className="home-webprojectSummary">
-          Discover my skills and experience in various technologies through my
-          personal website, where I share insights and innovative solutions.
+      <div className="tech-marquee" aria-hidden="true">
+        <div className="tech-marquee__track">
+          {[...techStack, ...techStack].map((tech, i) => (
+            <span key={`${tech.name}-${i}`}>{tech.name}</span>
+          ))}
+        </div>
+      </div>
+
+      <section className="section-block section-shell">
+        <p className="section-kicker">What I bring</p>
+        <h2 className="section-title section-title--gradient">Focused craft for mobile products</h2>
+        <p className="section-lead">
+          From API wiring to Play Store releases — I build apps people actually use every day.
         </p>
-</div>
+        <div className="expertise-grid">
+          {expertiseData.map((item, index) => (
+            <article key={item.title} className="expertise-item">
+              <span className="expertise-item__num">0{index + 1}</span>
+              <div className="expertise-item__icon">
+                <FontAwesomeIcon icon={item.icon} />
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-<div className="home-technologyView">
-       
-       <div className="home-techContainer">
-         <div className="home-techCard">
-         <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
-
-<SiReact className="text-[#61DAFB] mr-2 w-5 h-5 md:w-[30px] md:h-[30px]" />
-
-           <p className="home-techTitle">React JS</p>
-           </div>
-           <p className="home-techDesc">
-             Experienced in building dynamic web applications using React JS
-             and component-based architecture.
-           </p>
-         </div>
-
-         <div className="home-techCard">
-         <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
-
-         <SiReact className="text-[#61DAFB] mr-2 w-5 h-5 md:w-[30px] md:h-[30px]" />
-
-           <p className="home-techTitle">React Native</p>
-           </div>
-           <p className="home-techDesc">
-             Developed cross-platform mobile apps using React Native, ensuring
-             native performance and seamless user experiences.
-           </p>
-         </div>
-
-         <div className="home-techCard">
-         <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
-         <SiHtml5 className="text-[#e34c26] mr-2 w-6 h-6 md:w-[30px] md:h-[30px]" />
-<SiCss3 className="text-[#1572b6] mr-2 w-6 h-6 md:w-[30px] md:h-[30px]" />
- <p className="home-techTitle" style={{ margin: 0 }}>
-   HTML & CSS
- </p>
-</div>
-
-           <p className="home-techDesc">
-   Solid foundation in HTML & CSS for structuring and styling web pages with responsive and accessible designs.
- </p>
-</div>
-       </div>
-       <div className="techContainer">
- <div className="home-techCard">
- <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
- <SiTypescript className="text-[#3178c6] mr-2 w-6 h-6 md:w-[30px] md:h-[30px]" />
-
-   <p className="home-techTitle">
-     TypeScript & JavaScript
-   </p>
-   </div>
-   <p className="home-techDesc">
-     Proficient in JavaScript and TypeScript for writing clean,
-     maintainable code with enhanced developer productivity.
-   </p>
- </div>
-
- <div className="home-techCard">
- <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
- <SiJavascript className="text-[#f7df1e] mr-2 w-6 h-6 md:w-[30px] md:h-[30px]" />
-
-   <p className="home-techTitle">
-     UI / UX Design
-   </p>
-   </div>
-   <p className="home-techDesc">
-     Skilled in crafting intuitive and visually appealing user
-     experiences and interfaces that align with modern design
-     principles.
-   </p>
- </div>
-
- <div className="home-techCard">
- 
- <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
- <SiKotlin className="text-[#7F52FF] mr-2 w-6 h-6 md:w-[30px] md:h-[30px]" />
-
-   <p className="home-techTitle">
-     
-   Kotlin
-   </p>
-   </div>
-   <p className="home-techDesc">
-   Experience in developing modern, efficient, and type-safe applications using Kotlin, with a focus on clean architecture, maintainability, and performance.
-
-   </p>
- </div>
-</div>
-
-       <div className="techContainer">
-         <div className="home-techCard">
-         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
-         {/* <SiSpringboot style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30 }} /> */}
-
-
-           <p className="home-techTitle">Java
-           </p>
-           </div>
-           <p className="home-techDesc">
-             Strong in object-oriented programming with Java, building scalable
-             backend systems and Android applications with clean architecture.
-           </p>
-         </div>
-
-         <div className="home-techCard">
-         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 20, marginBottom: 10 }}>
-         <SiXcode className="text-[#147EFB] mr-2 w-6 h-6 md:w-[30px] md:h-[30px]" />
- <p className="home-techTitle">Xcode</p>
-</div>
-           <p className="home-techDesc">
-           Proficient in using Xcode for iOS development, debugging,
-           and testing native applications with seamless deployment workflows.
-
-           </p>
-         </div>
-
-         <div className="home-techCard">
-         <div style={{ display: 'flex', flexDirection: 'row',  alignItems: 'center' , justifyContent:'center', marginTop:20, marginBottom:10}}>
-
-         <SiMysql className="text-[#00758F] mr-2 w-8 h-8 md:w-[50px] md:h-[50px]" />
-           <p className="home-techTitle">SQL</p>
-           </div>
-           <p className="home-techDesc">
-             Strong understanding of relational databases and SQL for managing
-             and querying structured data effectively.
-           </p>
-         </div>
-       </div>
-
-       
-     </div>
-
-     <div className="home-projects">
-<h4 className="mobile-ProjectsText">Additional technologies and skills</h4>
-<p className="home-webprojectSummary">
-Discover my additional skills and expertise, elevating projects to new
-          heights of quality and efficiency.
+      <section className="section-block section-shell">
+        <p className="section-kicker">Selected work</p>
+        <h2 className="section-title section-title--gradient">Projects</h2>
+        <p className="section-lead">
+          Mobile products in production and web experiments that show how I think about UI and systems.
         </p>
-</div>
 
-<div className="AditionalSkilsContainer">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-
-          
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Git & GitHub</p>
-          </div>
-
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Android Studio</p>
-          </div>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-
-       
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Postman</p>
-          </div>
-
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">VS Code</p>
-          </div>
-          </div>
-  
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-
-       
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">X Code</p>
-          </div>
-
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Swagger</p>
-          </div>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-
-       
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Play&AppStore</p>
-          </div>
-
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">FireBase Console</p>
-          </div>
-          </div>
+        <h3 className="subsection-title">Mobile</h3>
+        <div className="project-rail">
+          {mobileProjectData.map((project) => (
+            <article key={project.title} className="project-tile">
+              <div className="project-tile__media">
+                <img src={project.image} alt={project.title} />
+              </div>
+              <div className="project-tile__body">
+                <h4>{project.title}</h4>
+                <p>{project.description}</p>
+                <div className="project-tile__links">
+                  {project.liveLink && project.liveLink !== '#' && (
+                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                      Live
+                    </a>
+                  )}
+                  {project.githubLink && project.githubLink !== '#' && (
+                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
 
+        <h3 className="subsection-title">Web</h3>
+        <div className="project-rail">
+          {webProjectData.map((project) => (
+            <article key={project.title} className="project-tile">
+              <div className="project-tile__media">
+                <img src={project.image} alt={project.title} />
+              </div>
+              <div className="project-tile__body">
+                <h4>{project.title}</h4>
+                <p>{project.description}</p>
+                <p className="project-tile__skills">{project.skills}</p>
+                <div className="project-tile__links">
+                  {project.liveLink && project.liveLink !== '#' && (
+                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                      Live
+                    </a>
+                  )}
+                  {project.githubLink && (
+                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-        <div className="home-projects">
-<h4 className="mobile-ProjectsText">About me</h4>
-<p className="home-webprojectSummary">
-Crafting visually stunning and functional experiences - I'm a Frontend
-          Developer passionate about turning ideas into digital reality
+      <section className="section-block section-shell">
+        <p className="section-kicker">Stack</p>
+        <h2 className="section-title section-title--gradient">Technologies</h2>
+        <p className="section-lead">
+          Tools I use to ship mobile and web products with confidence.
         </p>
-</div>
+        <div className="tech-grid">
+          {techStack.map((tech) => (
+            <article key={tech.name} className="tech-chip">
+              <div className="tech-chip__icons">
+                {tech.Icons
+                  ? tech.Icons.map((Icon, i) => (
+                      <Icon key={i} style={{ color: tech.colors[i] }} />
+                    ))
+                  : tech.Icon && <tech.Icon style={{ color: tech.color }} />}
+              </div>
+              <h4>{tech.name}</h4>
+              <p>{tech.desc}</p>
+            </article>
+          ))}
+        </div>
 
-<ContactSection />
-<div className="contact-wrapper">
-  
-  
+        <h3 className="subsection-title">Also comfortable with</h3>
+        <ul className="skill-list">
+          {extraSkills.map((skill) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
+      </section>
 
-
-
-    <div className="contact-form">
-      <h3 className="form-title">Send a Message</h3>
-
-      <input
-        type="text"
-        placeholder="Your Name"
-        className="input-field"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-
-      <input
-        type="tel"
-        placeholder="Mobile Number"
-        className="input-field"
-        value={mobile}
-        onChange={(e) => setMobile(e.target.value)}
-      />
-
-      <textarea
-        placeholder="Your Message"
-        className="input-field textarea"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-
-      <button className="send-btn" onClick={handleSend}>
-        🚀 Send Message
-      </button>
-
-      {showSuccessText && (
-        <p className="success-text">
-          ✅ Message sent successfully. Sasi Kumar will reach you soon... 😄
+      <section className="section-block section-shell contact-block">
+        <p className="section-kicker">Contact</p>
+        <h2 className="section-title section-title--gradient">Let&apos;s build something</h2>
+        <p className="section-lead">
+          Open to roles and collaborations — drop a message and I&apos;ll get back to you.
         </p>
-      )}
-    </div>
 
-</div>
+        <ContactSection />
 
-<footer className="footer">
-  <p>© 2025 Sasi Kumar Kuppam. All rights reserved.</p>
-</footer>
+        <div className="contact-form-wrap">
+          <h3 className="form-heading">Send a message</h3>
+          <input
+            type="text"
+            placeholder="Your name"
+            className="field"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="tel"
+            placeholder="Mobile number"
+            className="field"
+            value={mobile}
+            onChange={(e) => setMobile(e.target.value)}
+          />
+          <textarea
+            placeholder="Your message"
+            className="field field--area"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <button type="button" className="btn btn--primary form-submit" onClick={handleSend}>
+            Send message
+          </button>
+          {showSuccessText && (
+            <p className="form-success">Message sent — Sasi Kumar will reach you soon.</p>
+          )}
+        </div>
+      </section>
 
-{showScroll && (
-        <button
-          onClick={scrollToTop}
-          style={{
-            position: 'fixed',
-            bottom: '40px',
-            right: '40px',
-            backgroundColor: '#2563eb',
-            border: 'none',
-            borderRadius: '50%',
-            width: '56px',
-            height: '56px',
-            cursor: 'pointer',
-            boxShadow: '0 8px 20px rgba(37, 99, 235, 0.4)',
-            color: 'white',
-            fontSize: '28px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            transition: 'background-color 0.3s ease',
-            zIndex: 9999, // ensure it's above all content
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1e40af')}
-          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#2563eb')}
-          aria-label="Scroll to top"
-        >
+      <footer className="site-footer">
+        <p>© {new Date().getFullYear()} Sasi Kumar Kuppam. All rights reserved.</p>
+      </footer>
+
+      {showScroll && (
+        <button type="button" className="scroll-top" onClick={scrollToTop} aria-label="Scroll to top">
           ↑
         </button>
       )}
     </div>
-    
-    </>
   );
 };
 

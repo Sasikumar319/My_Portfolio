@@ -1,5 +1,5 @@
 import React from 'react';
-import './Technologies.css'; 
+import './Technologies.css';
 import {
   SiTypescript,
   SiJavascript,
@@ -8,216 +8,115 @@ import {
   SiHtml5,
   SiCss3,
   SiKotlin,
-  SiXcode
-} from "react-icons/si";
+  SiXcode,
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
+
+const techStack = [
+  {
+    name: 'React JS',
+    desc: 'Dynamic web apps with component-based architecture.',
+    Icon: SiReact,
+    color: '#61DAFB',
+  },
+  {
+    name: 'React Native',
+    desc: 'Cross-platform mobile with native performance.',
+    Icon: SiReact,
+    color: '#61DAFB',
+  },
+  {
+    name: 'HTML & CSS',
+    desc: 'Responsive structure and accessible styling.',
+    Icons: [SiHtml5, SiCss3],
+    colors: ['#e34c26', '#1572b6'],
+  },
+  {
+    name: 'TypeScript',
+    desc: 'Typed JavaScript for cleaner, safer code.',
+    Icon: SiTypescript,
+    color: '#3178c6',
+  },
+  {
+    name: 'JavaScript',
+    desc: 'Core language across web and mobile.',
+    Icon: SiJavascript,
+    color: '#c5a100',
+  },
+  {
+    name: 'UI / UX',
+    desc: 'Clear interfaces aligned with modern patterns.',
+    Icon: SiJavascript,
+    color: '#0b6b63',
+  },
+  {
+    name: 'Kotlin',
+    desc: 'Type-safe Android apps with clean architecture.',
+    Icon: SiKotlin,
+    color: '#7F52FF',
+  },
+  {
+    name: 'Java',
+    desc: 'OOP backends and Android with solid structure.',
+    Icon: FaJava,
+    color: '#007396',
+  },
+  {
+    name: 'Xcode',
+    desc: 'iOS build, debug, and deployment workflows.',
+    Icon: SiXcode,
+    color: '#147EFB',
+  },
+  {
+    name: 'SQL',
+    desc: 'Relational data modeling and querying.',
+    Icon: SiMysql,
+    color: '#00758F',
+  },
+];
+
+const extraSkills = [
+  'Git & GitHub',
+  'Android Studio',
+  'Postman',
+  'VS Code',
+  'Xcode',
+  'Swagger',
+  'Play & App Store',
+  'Firebase Console',
+];
 
 function Technologies() {
- 
   return (
-    <div className="techOverallDiv">
-  
-  <div className="techProjectView">
-        <p className="ProjectsTextContent">Technologies</p>
-        <p className="techSummary">
-          Discover my skills and experience in various technologies through my
-          personal website, where I share insights and innovative solutions.
-        </p>
-        <div className="techContainer">
-          <div className="techCard">
-          <div className='iconWithTextRow'>
-          <SiReact className="text-[#61DAFB] mr-2 w-5 h-5 md:w-[30px] md:h-[30px]" />
-            <p className="techTitle">React JS</p>
-            </div>
-            <p className="techDesc">
-              Experienced in building dynamic web applications using React JS
-              and component-based architecture.
-            </p>
-          </div>
- 
-          <div className="techCard">
-          <div className='iconWithTextRow'> 
-          <SiReact style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30  }} />
- 
-            <p className="techTitle">React Native</p>
-            </div>
-            <p className="techDesc">
-              Developed cross-platform mobile apps using React Native, ensuring
-              native performance and seamless user experiences.
-            </p>
-          </div>
- 
-          <div className="techCard">
-          <div className='iconWithTextRow'>
-                      <SiHtml5 style={{ color: '#e34c26', marginRight: 6, width: 30, height: 30 }} />
-  <SiCss3 style={{ color: '#1572b6', marginRight: 8, width: 30, height: 30 }} />
-  <p className="techTitle" style={{ margin: 0 }}>
-    HTML & CSS
-  </p>
-</div>
- 
-            <p className="techDesc">
-    Solid foundation in HTML & CSS for structuring and styling web pages with responsive and accessible designs.
-  </p>
-</div>
-        </div>
-        <div className="techContainer">
-  <div className="techCard">
-  <div className='iconWithTextRow'>
-      <SiTypescript style={{ color: '#3178c6', marginRight: 8, width: 30, height: 30  }} />
- 
-    <p className="techTitle">
-      TypeScript & JavaScript
-    </p>
-    </div>
-    <p className="techDesc">
-      Proficient in JavaScript and TypeScript for writing clean,
-      maintainable code with enhanced developer productivity.
-    </p>
-  </div>
- 
-  <div className="techCard">
-  <div className='iconWithTextRow'>
-      <SiJavascript style={{ color: '#f7df1e',marginRight: 8, width: 30, height: 30 }} />
- 
-    <p className="techTitle">
-      UI / UX Design
-    </p>
-    </div>
-    <p className="techDesc">
-      Skilled in crafting intuitive and visually appealing user
-      experiences and interfaces that align with modern design
-      principles.
-    </p>
-  </div>
- 
-  <div className="techCard">
-  
-  <div className='iconWithTextRow'>
-      <SiKotlin style={{ color: '#7F52FF', marginRight: 8, width: 30, height: 30 }} />
- 
-    <p className="techTitle">
-      
-    Kotlin
-    </p>
-    </div>
-    <p className="techDesc">
-    Experience in developing modern, efficient, and type-safe applications using Kotlin, with a focus on clean architecture, maintainability, and performance.
- 
-    </p>
-  </div>
-</div>
- 
-        <div className="techContainer">
-          <div className="techCard">
-          <div className='iconWithTextRow'>
-                      {/* <SiSpringboot style={{ color: '#61DAFB', marginRight: 8, width: 30, height: 30 }} /> */}
- 
- 
-            <p className="techTitle">Java
-            </p>
-            </div>
-            <p className="techDesc">
-              Strong in object-oriented programming with Java, building scalable
-              backend systems and Android applications with clean architecture.
-            </p>
-          </div>
- 
-          <div className="techCard">
-          <div className='iconWithTextRow'>
-                      <SiXcode style={{ color: '#147EFB', marginRight: 8, width: 30, height: 30 }} />
-  <p className="techTitle">Xcode</p>
-</div>
-            <p className="techDesc">
-            Proficient in using Xcode for iOS development, debugging,
-            and testing native applications with seamless deployment workflows.
- 
-            </p>
-          </div>
- 
-          <div className="techCard">
-          <div className='iconWithTextRow'>
+    <div className="tech-page section-shell">
+      <p className="section-kicker">Skills</p>
+      <h1 className="section-title section-title--gradient">Technologies</h1>
+      <p className="section-lead">
+        Tools I use to ship mobile and web products with confidence.
+      </p>
 
-          <SiMysql style={{ color: '#00758F', marginRight: 8, width: 50, height: 50 }} />
-            <p className="techTitle">SQL</p>
+      <div className="tech-page-grid">
+        {techStack.map((tech) => (
+          <article key={tech.name} className="tech-page-card">
+            <div className="tech-page-card__icons">
+              {tech.Icons
+                ? tech.Icons.map((Icon, i) => (
+                    <Icon key={i} style={{ color: tech.colors[i] }} />
+                  ))
+                : tech.Icon && <tech.Icon style={{ color: tech.color }} />}
             </div>
-            <p className="techDesc">
-              Strong understanding of relational databases and SQL for managing
-              and querying structured data effectively.
-            </p>
-          </div>
-        </div>
- 
-        
+            <h3>{tech.name}</h3>
+            <p>{tech.desc}</p>
+          </article>
+        ))}
       </div>
- 
-      <div className="techProjectView">
-        <p className="ProjectsTextContent">Additional technologies and skills</p>
-  
 
-
-        <p className="techSummary">
-          Discover my additional skills and expertise, elevating projects to new
-          heights of quality and efficiency.
-        </p>
-        <div className="AditionalSkilsContainer">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-
-          
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Git & GitHub</p>
-          </div>
-
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Android Studio</p>
-          </div>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-
-       
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Postman</p>
-          </div>
-
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">VS Code</p>
-          </div>
-          </div>
-  
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-
-       
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">X Code</p>
-          </div>
-
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Swagger</p>
-          </div>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', flex: 1 }}>
-
-       
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">Play&AppStore</p>
-          </div>
-
-          <div className="AditionalSkilsItem">
-            <div className="AditionalSkilsCircleDot"></div>
-            <p className="AditionalSkillText">FireBase Console</p>
-          </div>
-          </div>
-        </div>
-        
-      </div>
+      <h2 className="tech-extra-title">Also comfortable with</h2>
+      <ul className="tech-extra-list">
+        {extraSkills.map((skill) => (
+          <li key={skill}>{skill}</li>
+        ))}
+      </ul>
     </div>
   );
 }

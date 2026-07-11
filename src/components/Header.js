@@ -1,129 +1,102 @@
-import React, { useState } from 'react';
-import { FaLinkedinIn, FaGithub, FaInstagram, FaBars, FaTimes } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { FaLinkedinIn, FaGithub, FaBars, FaTimes } from 'react-icons/fa';
+import { LINKEDIN_URL, GITHUB_URL } from '../constants/social';
+import './Header.css';
+
+const SOCIALS = [
+  { Icon: FaLinkedinIn, href: LINKEDIN_URL, label: 'LinkedIn' },
+  { Icon: FaGithub, href: GITHUB_URL, label: 'GitHub' },
+];
 
 function Header({ tabs, activeTab, onTabClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleNav = (id) => {
+    onTabClick(id);
+    setIsMenuOpen(false);
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[#fff] px-4 md:px-10 py-4 md:py-6 z-50 text-white shadow-md">
-      
-      {/* Desktop Layout */}
-      <div className="hidden md:flex justify-between items-center">
-        
-        {/* Logo - Left */}
-        <div className="flex items-center gap-2 text-2xl font-bold">
-          {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">&lt;/&gt;</span> */}
-          <span
-  style={{
-    background: "linear-gradient(90deg, #4f46e5, #06b6d4)", // Indigo to cyan
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    fontWeight: "bold"
-  }}
->
-  Sasi Kumar
-</span>
-
-        </div>
-
-        {/* Tabs - Center */}
-        <nav>
-  <ul className="flex gap-10 text-sm font-bold">
-    {tabs.map((tab) => (
-      <li key={tab.id} className="relative group">
-      <button
-          className={`transition-colors ${
-            activeTab === tab.id ? 'text-blue-500' : 'text-black hover:text-blue-400'
-          }`}
-          onClick={() => onTabClick(tab.id)}
+    <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
+      <div className="site-header__inner">
+        <button
+          type="button"
+          className="site-brand"
+          onClick={() => handleNav('home')}
+          aria-label="Go to home"
         >
-          {tab.label}
+          <span className="site-brand__mark">&lt;/&gt;</span>
+          Sasi Kumar
         </button>
-        {activeTab === tab.id && (
-          <span className="absolute left-0 right-0 -bottom-1 h-0.5 bg-blue-500 rounded"></span>
-        )}
-      </li>
-    ))}
-  </ul>
-</nav>
 
+        <nav className="site-nav desktop-nav" aria-label="Primary">
+          <ul>
+            {tabs.map((tab) => (
+              <li key={tab.id}>
+                <button
+                  type="button"
+                  className={activeTab === tab.id ? 'is-active' : ''}
+                  onClick={() => handleNav(tab.id)}
+                >
+                  {tab.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        {/* Social Icons - Right */}
-        <div className="flex gap-3">
-          {[FaLinkedinIn, FaGithub, FaInstagram].map((Icon, i) => (
-            <a
-              key={i}
-              href="#"
-              className="bg-gray-100 text-black rounded-full p-2 w-8 h-8 flex items-center justify-center hover:scale-105 transition-transform"
-            >
+        <div className="site-socials desktop-socials">
+          {SOCIALS.map(({ Icon, href, label }) => (
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
               <Icon size={14} />
             </a>
           ))}
         </div>
+
+        <button
+          type="button"
+          className="menu-toggle"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+        </button>
       </div>
 
-      {/* Mobile Layout */}
-      <div className="flex md:hidden flex-col">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <div className="flex items-center gap-2 text-xl font-bold">
-        
-            <span
-  style={{
-    background: "linear-gradient(90deg, #4f46e5, #06b6d4)", // Indigo to cyan
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    fontWeight: "bold"
-  }}
->
-  Sasi Kumar
-</span>
-          </div>
-
-          {/* Menu Icon */}
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-black">
-            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <>
-            <nav className="mt-4">
-              <ul className="flex flex-col gap-3  font-bold items-start text-black">
-                {tabs.map((tab) => (
-                  <li key={tab.id}>
-                    <button
-                      className={`transition-colors ${
-                        activeTab === tab.id ? 'text-black' : 'text-blue hover:text-white'
-                      }`}
-                      onClick={() => {
-                        onTabClick(tab.id);
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      {tab.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Mobile Social Icons */}
-            <div className="flex gap-3 mt-4">
-              {[FaLinkedinIn, FaGithub, FaInstagram].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="bg-gray-100 text-black rounded-full p-2 w-8 h-8 flex items-center justify-center hover:scale-105 transition-transform"
-                >
-                  <Icon size={14} />
-                </a>
+      {isMenuOpen && (
+        <div className="mobile-panel">
+          <nav aria-label="Mobile">
+            <ul>
+              {tabs.map((tab) => (
+                <li key={tab.id}>
+                  <button
+                    type="button"
+                    className={activeTab === tab.id ? 'is-active' : ''}
+                    onClick={() => handleNav(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                </li>
               ))}
-            </div>
-          </>
-        )}
-      </div>
+            </ul>
+          </nav>
+          <div className="site-socials">
+            {SOCIALS.map(({ Icon, href, label }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                <Icon size={14} />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

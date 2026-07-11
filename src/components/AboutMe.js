@@ -1,74 +1,73 @@
 import React from 'react';
 import './AboutMe.css';
 import devImage from '../assets/Sasi_Ai.jpeg';
+import { LINKEDIN_URL } from '../constants/social';
 
 function AboutMe() {
   return (
-    <section className="about-container font-poppins">
-      <h1 className="section-title">About Me</h1>
+    <section className="about-page section-shell">
+      <p className="section-kicker">About</p>
+      <h1 className="section-title section-title--gradient">Sasi Kumar Kuppam</h1>
+      <p className="section-lead">
+        Mobile App Developer focused on React Native and Kotlin — shipping real products for schools and teams.
+      </p>
 
-      <div className="intro-wrapper">
-        <div className="intro-text">
-        <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
-        Hi, I'm <strong>Sasi Kumar Kuppam</strong>, a Mobile App Developer with 2.6 years of professional experience in building robust and user-friendly Android and cross-platform applications using React Native and Kotlin.
+      <div className="about-intro">
+        <div className="about-intro__text">
+          <p>
+            Hi, I&apos;m <strong>Sasi Kumar Kuppam</strong>, a Mobile App Developer with 3 years of
+            professional experience building robust Android and cross-platform apps with React Native and Kotlin.
           </p>
-          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
-          Based in Hyderabad, I specialize in developing scalable mobile applications integrated with REST APIs, Firebase, and modern development tools. I am passionate about delivering high-performance, real-world solutions that enhance user experience and drive results.
+          <p>
+            Based in Hyderabad, I specialize in scalable mobile applications integrated with REST APIs,
+            Firebase, and modern tooling. I care about performance, clear UX, and shipping to the stores.
           </p>
         </div>
-
-        <div className="intro-image-wrapper">
-          <div className="image-border">
-            <img src={devImage} alt="Sasi Kumar" className="profile-image" />
-          </div>
+        <div className="about-intro__media">
+          <img src={devImage} alt="Sasi Kumar" />
         </div>
       </div>
 
-      <div className="info-sections">
-        <div className="info-block">
-          <h2 className="info-title">
-            <span className="dot" /> Education & Skills
-          </h2>
-          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
-            Bachelor of Technology in Mechanical Engineering from JNTUK (2021). Skilled in React Native, Kotlin, JavaScript, Redux, Firebase, REST APIs, and mobile deployment to Play Store and App Store.
+      <div className="about-grid">
+        <article className="about-block">
+          <h2>Education &amp; skills</h2>
+          <p>
+            B.Tech in Mechanical Engineering from JNTUK (2021). Skilled in React Native, Kotlin,
+            JavaScript, Redux, Firebase, REST APIs, and Play Store / App Store deployment.
           </p>
-        </div>
-
-        <div className="info-block">
-          <h2 className="info-title">
-            <span className="dot" /> Professional Experience
-          </h2>
-          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
-            Currently working at Varsity Education Management Pvt Ltd as a Mobile App Developer. Previously transitioned from intern to junior developer, contributing to Android and cross-platform app development with a focus on performance and scalability.
+        </article>
+        <article className="about-block">
+          <h2>Experience</h2>
+          <p>
+            Currently at Varsity Education Management Pvt Ltd as a Mobile App Developer. Grew from
+            intern to junior developer, contributing to Android and cross-platform products.
           </p>
-        </div>
-
-        <div className="info-block">
-          <h2 className="info-title">
-            <span className="dot" /> Current Role
-          </h2>
-          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
-            Building cross-platform mobile applications using React Native and Kotlin. Collaborating with designers and backend teams, integrating APIs, and deploying apps to the Play Store.
+        </article>
+        <article className="about-block">
+          <h2>Current role</h2>
+          <p>
+            Building cross-platform apps with React Native and Kotlin. Collaborating with design and
+            backend teams, integrating APIs, and shipping to the Play Store.
           </p>
-        </div>
-
-        <div className="info-block">
-          <h2 className="info-title">
-            <span className="dot" /> Tools & Technologies
-          </h2>
-          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
-            Android Studio, Xcode, VS Code, Firebase, SQLite, Realm, Redux, GitHub, Bitbucket, Google Maps, Agile/Scrum, Axios.
+        </article>
+        <article className="about-block">
+          <h2>Tools</h2>
+          <p>
+            Android Studio, Xcode, VS Code, Firebase, SQLite, Realm, Redux, GitHub, Bitbucket,
+            Google Maps, Agile/Scrum, Axios.
           </p>
-        </div>
-
-        <div className="info-block">
-          <h2 className="info-title">
-            <span className="dot" /> Get in Touch
-          </h2>
-          <p style={{ color: 'gray', fontFamily: "'Poppins', sans-serif" }}>
-            I’m open to new opportunities and collaborations. You can reach me at <strong>sasikumarkuppam02754@gmail.com</strong> or on <a href="https://www.linkedin.com/in/sasikumar-ku" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+        </article>
+        <article className="about-block about-block--wide">
+          <h2>Get in touch</h2>
+          <p>
+            Open to new opportunities.{' '}
+            <a href="mailto:sasikumarkuppam02754@gmail.com">sasikumarkuppam02754@gmail.com</a>
+            {' · '}
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
           </p>
-        </div>
+        </article>
       </div>
     </section>
   );

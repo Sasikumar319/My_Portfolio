@@ -1,50 +1,31 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
-import Footer from './components/Footer'; 
-import Home from './components/Home';
-import './index.css';
+import HomeScreen from './components/HomeScreen';
 import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
 import Technologies from './components/Technologies';
-import './App.css'
-import HomeScreen from './components/HomeScreen';
+import './index.css';
+import './App.css';
 
 const TABS = [
-
   { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About me' },
+  { id: 'about', label: 'About' },
   { id: 'projects', label: 'Projects' },
-  { id: 'tech', label: 'Technologies' },
-
-
+  { id: 'tech', label: 'Skills' },
 ];
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
 
   return (
-    <div className="overallContainer">
-      <Header 
-        tabs={TABS} 
-        activeTab={activeTab} 
-        onTabClick={setActiveTab} 
-      />
-
-<main className="tabView">
-
-  {activeTab === 'home' && <HomeScreen />}
-  {activeTab === 'about' && <AboutMe />}
-  {activeTab === 'projects' && <Projects />}
-  {activeTab === 'tech' && <Technologies />}
-  {activeTab !== 'home' && activeTab !== 'about' && activeTab !=='projects'  && activeTab !=='tech'  &&(
-    <p>This is the {activeTab} section content.</p>
-  )}
-</main>
-
-      {/* <Footer 
-         tabs={TABS} 
-         activeTab={activeTab} 
-         onTabClick={setActiveTab}  />  */}
+    <div className="portfolio-app">
+      <Header tabs={TABS} activeTab={activeTab} onTabClick={setActiveTab} />
+      <main className="portfolio-main">
+        {activeTab === 'home' && <HomeScreen onNavigate={setActiveTab} />}
+        {activeTab === 'about' && <AboutMe />}
+        {activeTab === 'projects' && <Projects />}
+        {activeTab === 'tech' && <Technologies />}
+      </main>
     </div>
   );
 }
