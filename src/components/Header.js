@@ -8,7 +8,7 @@ const SOCIALS = [
   { Icon: FaGithub, href: GITHUB_URL, label: 'GitHub' },
 ];
 
-function Header({ tabs, activeTab, onTabClick }) {
+function Header({ navItems, activeSection }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -18,8 +18,8 @@ function Header({ tabs, activeTab, onTabClick }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNav = (id) => {
-    onTabClick(id);
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
@@ -29,7 +29,7 @@ function Header({ tabs, activeTab, onTabClick }) {
         <button
           type="button"
           className="site-brand"
-          onClick={() => handleNav('home')}
+          onClick={() => scrollTo('home')}
           aria-label="Go to home"
         >
           <span className="site-brand__mark">&lt;/&gt;</span>
@@ -38,14 +38,14 @@ function Header({ tabs, activeTab, onTabClick }) {
 
         <nav className="site-nav desktop-nav" aria-label="Primary">
           <ul>
-            {tabs.map((tab) => (
-              <li key={tab.id}>
+            {navItems.map((item) => (
+              <li key={item.id}>
                 <button
                   type="button"
-                  className={activeTab === tab.id ? 'is-active' : ''}
-                  onClick={() => handleNav(tab.id)}
+                  className={activeSection === item.id ? 'is-active' : ''}
+                  onClick={() => scrollTo(item.id)}
                 >
-                  {tab.label}
+                  {item.label}
                 </button>
               </li>
             ))}
@@ -75,14 +75,14 @@ function Header({ tabs, activeTab, onTabClick }) {
         <div className="mobile-panel">
           <nav aria-label="Mobile">
             <ul>
-              {tabs.map((tab) => (
-                <li key={tab.id}>
+              {navItems.map((item) => (
+                <li key={item.id}>
                   <button
                     type="button"
-                    className={activeTab === tab.id ? 'is-active' : ''}
-                    onClick={() => handleNav(tab.id)}
+                    className={activeSection === item.id ? 'is-active' : ''}
+                    onClick={() => scrollTo(item.id)}
                   >
-                    {tab.label}
+                    {item.label}
                   </button>
                 </li>
               ))}

@@ -1,30 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
-import HomeScreen from './components/HomeScreen';
-import AboutMe from './components/AboutMe';
-import Projects from './components/Projects';
-import Technologies from './components/Technologies';
+import PortfolioPage from './components/PortfolioPage';
+import { NAV_ITEMS } from './data/portfolioData';
 import './index.css';
 import './App.css';
 
-const TABS = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'tech', label: 'Skills' },
-];
-
 function App() {
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const sections = NAV_ITEMS.map((item) => item.id);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -45% 0px', threshold: 0 }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="portfolio-app">
-      <Header tabs={TABS} activeTab={activeTab} onTabClick={setActiveTab} />
+      <Header navItems={NAV_ITEMS} activeSection={activeSection} />
       <main className="portfolio-main">
-        {activeTab === 'home' && <HomeScreen onNavigate={setActiveTab} />}
-        {activeTab === 'about' && <AboutMe />}
-        {activeTab === 'projects' && <Projects />}
-        {activeTab === 'tech' && <Technologies />}
+        <PortfolioPage />
       </main>
     </div>
   );
