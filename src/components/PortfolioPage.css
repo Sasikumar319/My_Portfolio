@@ -503,6 +503,10 @@
   transition: transform 0.2s ease;
 }
 
+.store-links__badge--apple img {
+  height: 40px;
+}
+
 .store-links__badge:hover img {
   transform: scale(1.04);
 }

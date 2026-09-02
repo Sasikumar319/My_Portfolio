@@ -37,8 +37,8 @@ function StoreLinks({ playStore, appStore, github }) {
         </a>
       )}
       {appStore && (
-        <a href={appStore} target="_blank" rel="noopener noreferrer" className="store-links__text">
-          App Store
+        <a href={appStore} target="_blank" rel="noopener noreferrer" className="store-links__badge store-links__badge--apple">
+          <img src={STORE_BADGES.appStore} alt="Download on the App Store" />
         </a>
       )}
       {github && (

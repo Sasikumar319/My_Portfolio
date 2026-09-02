@@ -1,6 +1,7 @@
 import parentScreenshot from '../assets/parent.jpeg';
 import employeeScreenshot from '../assets/employe.jpeg';
 import hostelScreenshot from '../assets/hostel-app.png';
+import scaitsScreenshot from '../assets/scaits-phone.png';
 import googleMapScreenshot from '../assets/googleMap.jpeg';
 import qrScreenshot from '../assets/qr.jpeg';
 import chessScreenshot from '../assets/chess.png';
@@ -90,17 +91,28 @@ export const APPROACH = [
 
 export const MOBILE_APPS = [
   {
-    id: 'parent-app',
-    title: 'SC Parent App',
+    id: 'parent-connect',
+    title: 'Sri Chaitanya Parent Connect',
     description:
-      'Parents track fees, attendance, marks, feedback, and announcements in one app. Built with React Native, Firebase push, and offline-friendly flows.',
+      'Parents track fees, attendance, marks, feedback, announcements, and online fee payment in one app. Available on both Android and iOS.',
     image: parentScreenshot,
-    icon: `${process.env.PUBLIC_URL}/apps/parent-app-icon.png`,
-    tags: ['React Native', 'Firebase', 'FCM', 'Realm', 'REST APIs', 'Redux'],
-    playStore:
-      'https://play.google.com/store/apps/details?id=com.srichaitanya.parent&pcampaignid=web_share',
-    appStore: null,
-    stats: '50K+ downloads on Play Store',
+    icon: `${process.env.PUBLIC_URL}/apps/parent-connect-icon.png`,
+    tags: ['React Native', 'Firebase', 'FCM', 'Realm', 'REST APIs', 'Android', 'iOS'],
+    playStore: 'https://play.google.com/store/apps/details?id=com.srichaitanyaparentapp&hl=en_IN',
+    appStore: 'https://apps.apple.com/us/app/sri-chaitanya-parent-connect/id6661027041',
+    stats: 'Android + iOS · Live on Play Store & App Store',
+  },
+  {
+    id: 'scaits-app',
+    title: 'SCAITS App',
+    description:
+      'Campus management app for Sri Chaitanya institutions — student attendance, academic monitoring, and organization-wide records. Available on Android and iOS.',
+    image: scaitsScreenshot,
+    icon: `${process.env.PUBLIC_URL}/apps/scaits-icon.png`,
+    tags: ['React Native', 'Attendance', 'REST APIs', 'Firebase', 'Android', 'iOS'],
+    playStore: 'https://play.google.com/store/apps/details?id=com.varsity.scaits&hl=en_IN',
+    appStore: 'https://apps.apple.com/us/app/scaits/id6756477330',
+    stats: 'Android + iOS · Live on Play Store & App Store',
   },
   {
     id: 'employee-app',
@@ -208,4 +220,5 @@ export const CONTACT = {
 
 export const STORE_BADGES = {
   playStore: `${process.env.PUBLIC_URL}/apps/google-play-badge.png`,
+  appStore: `${process.env.PUBLIC_URL}/apps/app-store-badge.svg`,
 };
