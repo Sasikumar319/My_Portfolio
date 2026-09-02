@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/My_Portfolio/static/css/main.06120f0a.css",
-    "main.js": "/My_Portfolio/static/js/main.1a01a344.js",
+    "main.js": "/My_Portfolio/static/js/main.4c3969f0.js",
     "static/media/hostel-app.png": "/My_Portfolio/static/media/hostel-app.d530c567996384cb228a.png",
     "static/media/Sasi photo.jpg": "/My_Portfolio/static/media/Sasi photo.5187674254a95f852054.jpg",
     "static/media/AI.png": "/My_Portfolio/static/media/AI.ed48505301587f3ba5d2.png",
@@ -13,12 +13,13 @@
     "static/media/parent.jpeg": "/My_Portfolio/static/media/parent.b71e5895f01358f0c116.jpeg",
     "static/media/chess.png": "/My_Portfolio/static/media/chess.39d2d3c9832606b4fd88.png",
     "static/media/employe.jpeg": "/My_Portfolio/static/media/employe.6e397b0e7344f06a8200.jpeg",
+    "static/media/neuropep-intricare.png": "/My_Portfolio/static/media/neuropep-intricare.696bd34dea273c3ade5b.png",
     "index.html": "/My_Portfolio/index.html",
     "main.06120f0a.css.map": "/My_Portfolio/static/css/main.06120f0a.css.map",
-    "main.1a01a344.js.map": "/My_Portfolio/static/js/main.1a01a344.js.map"
+    "main.4c3969f0.js.map": "/My_Portfolio/static/js/main.4c3969f0.js.map"
   },
   "entrypoints": [
     "static/css/main.06120f0a.css",
-    "static/js/main.1a01a344.js"
+    "static/js/main.4c3969f0.js"
   ]
 }
